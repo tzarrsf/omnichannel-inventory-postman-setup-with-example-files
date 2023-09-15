@@ -1539,7 +1539,7 @@
 			]
 		},
 		{
-			"name": "Get Availability (Connect API) oAuth 2.0",
+			"name": "Get Availability (oAuth Flow + Connect API)",
 			"item": [
 				{
 					"name": "1. Get Availability by Location Group",
