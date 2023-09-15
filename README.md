@@ -18,9 +18,9 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 
 ## The variables in the environment can be altered for your Connect API calls:
 
-1. blah
-2. blah
-3. blah
+1. productStockKeepingUnitsCommaDelimited - e.g: PROSE,B-C-COFMAC-001,ESP-IOT-1,ID-PEM,PS-EL,PS-INF,TR-COFMAC-001
+2. locationGroupIdentifiersCommaDelimited - e.g: LocationGroup01,LocationGroup02
+3. locationIdentifiersCommaDelimited - e.g: CaliforniaWarehouse,VirginiaWarehouse
 
 ## You will need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
 - Postman_OCI
