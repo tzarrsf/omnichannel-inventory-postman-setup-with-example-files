@@ -19,4 +19,5 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 ### You will need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
 - Postman_OCI
 - Postman_OCI_ConnectApi
+
 Consult the course documentation for details.
