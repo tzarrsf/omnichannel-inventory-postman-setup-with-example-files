@@ -16,7 +16,13 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
  2.  Multiple Capricorn Coffee items
  3.  Single item in which you supply the SKU
 
-### You will need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
+## The variables in the environment can be altered for your Connect API calls:
+
+1. blah
+2. blah
+3. blah
+
+## You will need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
 - Postman_OCI
 - Postman_OCI_ConnectApi
 
