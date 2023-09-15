@@ -10,8 +10,8 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 4. Get Availability (Log In Flow + Connect API)
 5. Get Availability (Connect API) oAuth 2.0
 
-## Example inventory upload iles are provided for:
+## Example inventory upload files are provided for:
 
- 1.  A single Capricorn Coffee item
+ 1.  Single Capricorn Coffee item
  2.  Multiple Capricorn Coffee items
- 3.  A single item in which you supply the SKU
+ 3.  Single item in which you supply the SKU
