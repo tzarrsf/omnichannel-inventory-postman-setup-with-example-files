@@ -10,7 +10,48 @@
 			"name": "Upload Inventory (Happy Path)",
 			"item": [
 				{
-					"name": "1. Get Access Token",
+					"name": "1. Clear Collection Variables",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"\r",
+									"// Clean up the variables from the collection set throughout the various calls\r",
+									"pm.collectionVariables.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Tests...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Access Token",
 					"event": [
 						{
 							"listen": "test",
@@ -92,7 +133,7 @@
 					"response": []
 				},
 				{
-					"name": "2. Authenticate into Org",
+					"name": "3. Authenticate into Org",
 					"event": [
 						{
 							"listen": "test",
@@ -143,7 +184,7 @@
 					"response": []
 				},
 				{
-					"name": "3. Get Inventory Import Link",
+					"name": "4. Get Inventory Import Link",
 					"event": [
 						{
 							"listen": "prerequest",
@@ -230,7 +271,7 @@
 					"response": []
 				},
 				{
-					"name": "4. Post Inventory Import File",
+					"name": "5. Post Inventory Import File",
 					"event": [
 						{
 							"listen": "test",
@@ -284,7 +325,7 @@
 					"response": []
 				},
 				{
-					"name": "5. Get Inventory Import Status",
+					"name": "6. Get Inventory Import Status",
 					"event": [
 						{
 							"listen": "test",
@@ -345,7 +386,7 @@
 					"response": []
 				},
 				{
-					"name": "6. Get Inventory Import Results",
+					"name": "7. Get Inventory Import Results",
 					"event": [
 						{
 							"listen": "test",
@@ -406,7 +447,48 @@
 			"name": "Get Running Jobs",
 			"item": [
 				{
-					"name": "1. Get Access Token",
+					"name": "1. Clear Collection Variables",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"\r",
+									"// Clean up the variables from the collection set throughout the various calls\r",
+									"pm.collectionVariables.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Tests...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Access Token",
 					"event": [
 						{
 							"listen": "test",
@@ -489,7 +571,7 @@
 					"response": []
 				},
 				{
-					"name": "2. Authenticate into Org",
+					"name": "3. Authenticate into Org",
 					"event": [
 						{
 							"listen": "test",
@@ -540,7 +622,7 @@
 					"response": []
 				},
 				{
-					"name": "3. Get Jobs",
+					"name": "4. Get Jobs",
 					"event": [
 						{
 							"listen": "test",
@@ -613,7 +695,48 @@
 			"name": "Get and Delete Import Jobs",
 			"item": [
 				{
-					"name": "1. Get Access Token",
+					"name": "1. Clear Collection Variables",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"\r",
+									"// Clean up the variables from the collection set throughout the various calls\r",
+									"pm.collectionVariables.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Tests...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Access Token",
 					"event": [
 						{
 							"listen": "test",
@@ -695,7 +818,7 @@
 					"response": []
 				},
 				{
-					"name": "2. Authenticate into Org",
+					"name": "3. Authenticate into Org",
 					"event": [
 						{
 							"listen": "test",
@@ -746,7 +869,7 @@
 					"response": []
 				},
 				{
-					"name": "3. Get Jobs",
+					"name": "4. Get Jobs",
 					"event": [
 						{
 							"listen": "test",
@@ -814,7 +937,7 @@
 					"response": []
 				},
 				{
-					"name": "4. Delete First Job in Collection",
+					"name": "5. Delete First Job in Collection",
 					"event": [
 						{
 							"listen": "test",
@@ -885,7 +1008,7 @@
 					"response": []
 				},
 				{
-					"name": "5. Get Jobs",
+					"name": "6. Get Jobs",
 					"event": [
 						{
 							"listen": "test",
@@ -951,6 +1074,898 @@
 						}
 					},
 					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Availability (Log In Flow + Connect API)",
+			"item": [
+				{
+					"name": "1. Clear Collection Variables",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"\r",
+									"// Clean up the variables from the collection set throughout the various calls\r",
+									"pm.collectionVariables.clear();"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Clear Collection Variables Tests...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "2. Authenticate Connected App",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Authenticate Connected App Tests...');\r",
+									"\r",
+									"pm.test('Status code is 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is valid and has a JSON body', () => {\r",
+									"     pm.response.to.be.ok;\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the access token is found in the body and save it to the variables', () => {\r",
+									"    const data = pm.response.json();\r",
+									"    pm.expect(data.token_type).to.exist;\r",
+									"    pm.expect(data.token_type).to.be.a.string;\r",
+									"    pm.expect(data.access_token).to.exist;\r",
+									"    pm.expect(data.access_token).to.be.a.string;\r",
+									"    const id = data.id.split('/');\r",
+									"\r",
+									"    pm.collectionVariables.set('_token', data.access_token);\r",
+									"    pm.collectionVariables.set('_instanceUrl', data.instance_url);\r",
+									"    pm.collectionVariables.set('_userId', id.pop());\r",
+									"    pm.collectionVariables.set('_orgId', id.pop());\r",
+									"});\r",
+									"\r",
+									"console.debug('token: ' + pm.collectionVariables.get('_token'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Authenticate Connected App Pre-request Script...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "{{orgAdminUsername}}",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "{{orgAdminPassword}}{{orgAdminSecurityToken}}",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "client_id",
+									"value": "{{connectedAppConsumerKey}}",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "{{connectedAppConsumerSecret}}",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{orgLoginUrl}}/services/oauth2/token",
+							"host": [
+								"{{orgLoginUrl}}"
+							],
+							"path": [
+								"services",
+								"oauth2",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Log in as System Administrator",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Log in as System Administrator Tests...');\r",
+									"\r",
+									"pm.test('Status code is 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the access token is found in the body and save it to the variables', () => {\r",
+									"    const result = xml2Json(pm.response.text())['soapenv:Envelope']['soapenv:Body'].loginResponse.result;\r",
+									"    const url = result.serverUrl.split('/');\r",
+									"\r",
+									"    pm.expect(result.sessionId).to.exist;\r",
+									"    pm.expect(result.sessionId).to.be.a.string;\r",
+									"\r",
+									"    pm.collectionVariables.set('_token', result.sessionId);\r",
+									"    pm.collectionVariables.set('_instanceUrl', url[0] + '//' + url[2]);\r",
+									"    pm.collectionVariables.set('_userId', result.userId);\r",
+									"    pm.collectionVariables.set('_orgId', result.userInfo.organizationId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('Log in as System Administrator Pre-request Script...');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "login",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n    xmlns:n1=\"urn:partner.soap.sforce.com\"\r\n    xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <env:Body>\r\n        <n1:login>\r\n            <n1:username><![CDATA[{{orgAdminUsername}}]]></n1:username>\r\n            <n1:password><![CDATA[{{orgAdminPassword}}]]></n1:password>\r\n        </n1:login>\r\n    </env:Body>\r\n</env:Envelope>"
+						},
+						"url": {
+							"raw": "{{orgLoginUrl}}/services/Soap/u/{{apiVersion}}",
+							"host": [
+								"{{orgLoginUrl}}"
+							],
+							"path": [
+								"services",
+								"Soap",
+								"u",
+								"{{apiVersion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "5. Log in as Buyer Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Log in as Buyer Tests...');\r",
+									"\r",
+									"console.log('NOTE: If the prior call failed check that your user is \\'API Enabled.\\' The fastest way to assign this is likely by creating and applying a permission set to the user. API Enabled is under \\'System Permissions.\\' Also check that the Environment variable orgId is set.');\r",
+									"\r",
+									"pm.test('Status code is 200', () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the access token is found in the body and save it to the variables', () => {\r",
+									"    const result = xml2Json(pm.response.text())['soapenv:Envelope']['soapenv:Body'].loginResponse.result;\r",
+									"    const url = result.serverUrl.split('/');\r",
+									"\r",
+									"    pm.expect(result.sessionId).to.exist;\r",
+									"    pm.expect(result.sessionId).to.be.a.string; \r",
+									"\r",
+									"    pm.collectionVariables.set('_token', result.sessionId);\r",
+									"    pm.collectionVariables.set('_instanceUrl', url[0] + '//' + url[2]);\r",
+									"    pm.collectionVariables.set('_userId', result.userId);\r",
+									"    pm.collectionVariables.set('_orgId', result.userInfo.organizationId);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log(\"NOTE: If the next call fails check that your user is \\\"API Enabled.\\\" The fastest way to assign this is likely by creating and applying a permission set to the user.  API Enabled is under \\\"System Permissions.\\\" Also check that the Environment variable orgId is set.\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "text/xml; charset=UTF-8",
+								"type": "text"
+							},
+							{
+								"key": "SOAPAction",
+								"value": "login",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "text/xml",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<env:Envelope xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\"\r\n    xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\r\n    xmlns:n1=\"urn:partner.soap.sforce.com\"\r\n    xmlns:env=\"http://schemas.xmlsoap.org/soap/envelope/\">\r\n    <env:Header>\r\n        <n1:LoginScopeHeader>\r\n            <n1:organizationId>{{orgId}}</n1:organizationId>\r\n        </n1:LoginScopeHeader>\r\n    </env:Header>\r\n    <env:Body>\r\n        <n1:login>\r\n            <n1:username><![CDATA[{{buyerUsername}}]]></n1:username>\r\n            <n1:password><![CDATA[{{buyerPassword}}]]></n1:password>\r\n        </n1:login>\r\n    </env:Body>\r\n</env:Envelope>"
+						},
+						"url": {
+							"raw": "{{orgLoginUrl}}/services/Soap/u/{{apiVersion}}",
+							"host": [
+								"{{orgLoginUrl}}"
+							],
+							"path": [
+								"services",
+								"Soap",
+								"u",
+								"{{apiVersion}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Availability by Location Group",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"/*\r",
+									"This is the URL pattern for the Connect API call\r",
+									"/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability'\r",
+									"*/\r",
+									"\r",
+									"console.log('Get Availability by Location Group Pre-request Script...');\r",
+									"\r",
+									"console.log('Parsing and assigning locationGroupIdentifiers...');\r",
+									"const locationGroupIdsCommaDelimited = pm.environment.get('locationGroupIdentifiersCommaDelimited');\r",
+									"console.log(\"locationGroupIdsCommaDelimited: \" + locationGroupIdsCommaDelimited);\r",
+									"const locationGroupIdsArray = locationGroupIdsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_locationGroupIdentifiers', locationGroupIdsArray);\r",
+									"console.log('# of Location Group Identifiers: ' + locationGroupIdsArray.length + ' Details:\\r\\n' + locationGroupIdsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('Parsing and assigning productStockKeepingUnits...');\r",
+									"const productStockKeepingUnitsCommaDelimited = pm.environment.get('productStockKeepingUnitsCommaDelimited');\r",
+									"console.log(\"productStockKeepingUnitsCommaDelimited: \" + productStockKeepingUnitsCommaDelimited);\r",
+									"const productStockKeepingUnitsArray = productStockKeepingUnitsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_productStockKeepingUnits', productStockKeepingUnitsArray);\r",
+									"console.log('# of Product Stock Keeping Units: ' + productStockKeepingUnitsArray.length + ' Details:\\r\\n' + productStockKeepingUnitsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('_token: ' + pm.collectionVariables.get('_token'));\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Get Availability by Location Group Tests...');\r",
+									"\r",
+									"pm.test('Status code is 201', () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is valid and has a JSON body', () => {\r",
+									"     pm.response.to.be.success;\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the response', () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(jsonData.locationGroups).to.exist;\r",
+									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
+									"    \r",
+									"    const locationGroups = jsonData.locationGroups;\r",
+									"    console.log('Number of Location Groups: ' + locationGroups.length + ' Details:\\r\\n' + locationGroups.join(',\\r\\n'));\r",
+									"    pm.collectionVariables.set('_locationGroups', locationGroups);\r",
+									"    pm.expect(locationGroups.length > 0);\r",
+									"    pm.expect(locationGroups[0].locationGroupIdentifier).to.exist;\r",
+									"    pm.expect(locationGroups[0].locationGroupIdentifier).to.be.an('String');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords).to.be.an('array');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0]).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToFulfill).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToFulfill).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToOrder).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToOrder).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].onHand).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].onHand).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].reserved).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].reserved).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].safetyStockCount).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].safetyStockCount).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].stockKeepingUnit).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].stockKeepingUnit).to.be.an('String');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"locationGroupIdentifiers\": [\"LocationGroup01\"],\r\n    \"stockKeepingUnits\": [\"SomeSKU\"],\r\n    \"useCache\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orgHostMySalesforceFormat}}/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability",
+							"host": [
+								"{{orgHostMySalesforceFormat}}"
+							],
+							"path": [
+								"services",
+								"data",
+								"v58.0",
+								"commerce",
+								"oci",
+								"availability",
+								"availability-records",
+								"actions",
+								"get-availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "4. Get Availability by Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"/*\r",
+									"This is the URL pattern for the Connect API call\r",
+									"/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability'\r",
+									"*/\r",
+									"\r",
+									"console.log('Get Availability by Location Group Pre-request Script...');\r",
+									"\r",
+									"console.log('Parsing and assigning locationGroupIdentifiers...');\r",
+									"const locationGroupIdsCommaDelimited = pm.environment.get('locationGroupIdentifiersCommaDelimited');\r",
+									"console.log(\"locationGroupIdsCommaDelimited: \" + locationGroupIdsCommaDelimited);\r",
+									"const locationGroupIdsArray = locationGroupIdsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_locationGroupIdentifiers', locationGroupIdsArray);\r",
+									"console.log('# of Location Group Identifiers: ' + locationGroupIdsArray.length + ' Details:\\r\\n' + locationGroupIdsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('Parsing and assigning productStockKeepingUnits...');\r",
+									"const productStockKeepingUnitsCommaDelimited = pm.environment.get('productStockKeepingUnitsCommaDelimited');\r",
+									"console.log(\"productStockKeepingUnitsCommaDelimited: \" + productStockKeepingUnitsCommaDelimited);\r",
+									"const productStockKeepingUnitsArray = productStockKeepingUnitsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_productStockKeepingUnits', productStockKeepingUnitsArray);\r",
+									"console.log('# of Product Stock Keeping Units: ' + productStockKeepingUnitsArray.length + ' Details:\\r\\n' + productStockKeepingUnitsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('_token: ' + pm.collectionVariables.get('_token'));\r",
+									"\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Get Availability by Location Group Tests...');\r",
+									"\r",
+									"pm.test('Status code is 201', () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is valid and has a JSON body', () => {\r",
+									"     pm.response.to.be.success;\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the response', () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(jsonData.locationGroups).to.exist;\r",
+									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
+									"\r",
+									"    const locations = jsonData.locations;\r",
+									"    console.log('Number of Locations: ' + locations.length + ' Details:\\r\\n' + locations.join(',\\r\\n'));\r",
+									"    pm.collectionVariables.set('_locations', locations);\r",
+									"    pm.expect(locations.length > 0);\r",
+									"    pm.expect(locations[0].inventoryRecords).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords).to.be.an('array');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToFulfill).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToFulfill).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToOrder).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToOrder).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].onHand).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].onHand).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].reserved).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].reserved).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].safetyStockCount).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].safetyStockCount).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].stockKeepingUnit).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].stockKeepingUnit).to.be.an('String');\r",
+									"    pm.expect(locations[0].locationIdentifier[0]).to.exist;\r",
+									"    pm.expect(locations[0].locationIdentifier[0]).to.be.an('String');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"locationIdentifiers\": [\"Warehouse01\"],\r\n    \"stockKeepingUnits\": [\"SomeSKU\"],\r\n    \"useCache\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orgHostMySalesforceFormat}}/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability",
+							"host": [
+								"{{orgHostMySalesforceFormat}}"
+							],
+							"path": [
+								"services",
+								"data",
+								"v58.0",
+								"commerce",
+								"oci",
+								"availability",
+								"availability-records",
+								"actions",
+								"get-availability"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Availability (Connect API) oAuth 2.0",
+			"item": [
+				{
+					"name": "1. Get Availability by Location Group",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"/*\r",
+									"This is the URL pattern for the Connect API call\r",
+									"/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability'\r",
+									"*/\r",
+									"\r",
+									"console.log('Get Availability by Location Group Pre-request Script...');\r",
+									"\r",
+									"console.log('Parsing and assigning locationGroupIdentifiers...');\r",
+									"const locationGroupIdsCommaDelimited = pm.environment.get('locationGroupIdentifiersCommaDelimited');\r",
+									"console.log(\"locationGroupIdsCommaDelimited: \" + locationGroupIdsCommaDelimited);\r",
+									"const locationGroupIdsArray = locationGroupIdsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_locationGroupIdentifiers', locationGroupIdsArray);\r",
+									"console.log('# of Location Group Identifiers: ' + locationGroupIdsArray.length + ' Details:\\r\\n' + locationGroupIdsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('Parsing and assigning productStockKeepingUnits...');\r",
+									"const productStockKeepingUnitsCommaDelimited = pm.environment.get('productStockKeepingUnitsCommaDelimited');\r",
+									"console.log(\"productStockKeepingUnitsCommaDelimited: \" + productStockKeepingUnitsCommaDelimited);\r",
+									"const productStockKeepingUnitsArray = productStockKeepingUnitsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_productStockKeepingUnits', productStockKeepingUnitsArray);\r",
+									"console.log('# of Product Stock Keeping Units: ' + productStockKeepingUnitsArray.length + ' Details:\\r\\n' + productStockKeepingUnitsArray.join(',\\r\\n'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Get Availability by Location Group Tests...');\r",
+									"\r",
+									"pm.test('Status code is 201', () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is valid and has a JSON body', () => {\r",
+									"     pm.response.to.be.success;\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the response', () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(jsonData.locationGroups).to.exist;\r",
+									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
+									"    \r",
+									"    const locationGroups = jsonData.locationGroups;\r",
+									"    console.log('Number of Location Groups: ' + locationGroups.length + ' Details:\\r\\n' + locationGroups.join(',\\r\\n'));\r",
+									"    pm.collectionVariables.set('_locationGroups', locationGroups);\r",
+									"    pm.expect(locationGroups.length > 0);\r",
+									"    pm.expect(locationGroups[0].locationGroupIdentifier).to.exist;\r",
+									"    pm.expect(locationGroups[0].locationGroupIdentifier).to.be.an('String');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords).to.be.an('array');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0]).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToFulfill).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToFulfill).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToOrder).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].availableToOrder).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].onHand).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].onHand).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].reserved).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].reserved).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].safetyStockCount).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].safetyStockCount).to.be.an('Number');\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].stockKeepingUnit).to.exist;\r",
+									"    pm.expect(locationGroups[0].inventoryRecords[0].stockKeepingUnit).to.be.an('String');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"locationGroupIdentifiers\": [\"LocationGroup01\"],\r\n    \"stockKeepingUnits\": [\"SomeSKU\"],\r\n    \"useCache\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orgHostMySalesforceFormat}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
+							"host": [
+								"{{orgHostMySalesforceFormat}}"
+							],
+							"path": [
+								"services",
+								"data",
+								"v{{apiVersion}}",
+								"commerce",
+								"oci",
+								"availability",
+								"availability-records",
+								"actions",
+								"get-availability"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "1. Get Availability by Location",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"\r",
+									"/*\r",
+									"This is the URL pattern for the Connect API call\r",
+									"/services/data/v58.0/commerce/oci/availability/availability-records/actions/get-availability'\r",
+									"*/\r",
+									"\r",
+									"console.log('Get Availability by Location Group Pre-request Script...');\r",
+									"\r",
+									"console.log('Parsing and assigning locationIdentifiers...');\r",
+									"const locationIdsCommaDelimited = pm.environment.get('locationIdentifiersCommaDelimited');\r",
+									"console.log(\"locationIdsCommaDelimited: \" + locationIdsCommaDelimited);\r",
+									"const locationIdsArray = locationIdsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_locationIdentifiers', locationIdsArray);\r",
+									"console.log('# of Location Identifiers: ' + locationIdsArray.length + ' Details:\\r\\n' + locationIdsArray.join(',\\r\\n'));\r",
+									"\r",
+									"console.log('Parsing and assigning productStockKeepingUnits...');\r",
+									"const productStockKeepingUnitsCommaDelimited = pm.environment.get('productStockKeepingUnitsCommaDelimited');\r",
+									"console.log(\"productStockKeepingUnitsCommaDelimited: \" + productStockKeepingUnitsCommaDelimited);\r",
+									"const productStockKeepingUnitsArray = productStockKeepingUnitsCommaDelimited.split(',');\r",
+									"pm.collectionVariables.set('_productStockKeepingUnits', productStockKeepingUnitsArray);\r",
+									"console.log('# of Product Stock Keeping Units: ' + productStockKeepingUnitsArray.length + ' Details:\\r\\n' + productStockKeepingUnitsArray.join(',\\r\\n'));"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('Get Availability by Location Group Tests...');\r",
+									"\r",
+									"pm.test('Status code is 201', () => {\r",
+									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"pm.test('Response is valid and has a JSON body', () => {\r",
+									"     pm.response.to.be.success;\r",
+									"     pm.response.to.be.withBody;\r",
+									"     pm.response.to.be.json;\r",
+									"});\r",
+									"\r",
+									"pm.test('Validate the response', () => {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    \r",
+									"    pm.expect(jsonData.locationGroups).to.exist;\r",
+									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
+									"\r",
+									"    const locations = jsonData.locations;\r",
+									"    console.log('Number of Locations: ' + locations.length + ' Details:\\r\\n' + locations.join(',\\r\\n'));\r",
+									"    pm.collectionVariables.set('_locations', locations);\r",
+									"    pm.expect(locations.length > 0);\r",
+									"    pm.expect(locations[0].inventoryRecords).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords).to.be.an('array');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToFulfill).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToFulfill).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToOrder).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].availableToOrder).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].onHand).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].onHand).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].reserved).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].reserved).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].safetyStockCount).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].safetyStockCount).to.be.an('Number');\r",
+									"    pm.expect(locations[0].inventoryRecords[0].stockKeepingUnit).to.exist;\r",
+									"    pm.expect(locations[0].inventoryRecords[0].stockKeepingUnit).to.be.an('String');\r",
+									"    pm.expect(locations[0].locationIdentifier[0]).to.exist;\r",
+									"    pm.expect(locations[0].locationIdentifier[0]).to.be.an('String');\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"locationIdentifiers\": [\"Warehouse01\"],\r\n    \"stockKeepingUnits\": [\"SomeSKU\"],\r\n    \"useCache\": \"false\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{orgHostMySalesforceFormat}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
+							"host": [
+								"{{orgHostMySalesforceFormat}}"
+							],
+							"path": [
+								"services",
+								"data",
+								"v{{apiVersion}}",
+								"commerce",
+								"oci",
+								"availability",
+								"availability-records",
+								"actions",
+								"get-availability"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "oauth2",
+				"oauth2": [
+					{
+						"key": "scope",
+						"value": "",
+						"type": "string"
+					},
+					{
+						"key": "password",
+						"value": "{{orgAdminPassword}}{{orgAdminSecurityToken}}",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "{{orgAdminUsername}}",
+						"type": "string"
+					},
+					{
+						"key": "grant_type",
+						"value": "password_credentials",
+						"type": "string"
+					},
+					{
+						"key": "authUrl",
+						"value": "{{orgLoginUrl}}",
+						"type": "string"
+					},
+					{
+						"key": "accessTokenUrl",
+						"value": "{{orgLoginUrl}}/services/oauth2/token",
+						"type": "string"
+					},
+					{
+						"key": "client_authentication",
+						"value": "body",
+						"type": "string"
+					},
+					{
+						"key": "clientSecret",
+						"value": "{{connectedAppConsumerSecret}}",
+						"type": "string"
+					},
+					{
+						"key": "clientId",
+						"value": "{{connectedAppConsumerKey}}",
+						"type": "string"
+					},
+					{
+						"key": "tokenName",
+						"value": "SF Token",
+						"type": "string"
+					},
+					{
+						"key": "refreshRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "tokenRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "authRequestParams",
+						"value": [],
+						"type": "any"
+					},
+					{
+						"key": "challengeAlgorithm",
+						"value": "S256",
+						"type": "string"
+					},
+					{
+						"key": "useBrowser",
+						"value": true,
+						"type": "boolean"
+					},
+					{
+						"key": "addTokenTo",
+						"value": "header",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
 				}
 			]
 		}
@@ -1031,11 +2046,35 @@
 	],
 	"variable": [
 		{
-			"key": "_importJobIds",
+			"key": "_locationGroupIdentifiers",
 			"value": ""
 		},
 		{
-			"key": "_importJobId",
+			"key": "_productStockKeepingUnits",
+			"value": ""
+		},
+		{
+			"key": "_token",
+			"value": ""
+		},
+		{
+			"key": "_instanceUrl",
+			"value": ""
+		},
+		{
+			"key": "_userId",
+			"value": ""
+		},
+		{
+			"key": "_orgId",
+			"value": ""
+		},
+		{
+			"key": "_locationGroups",
+			"value": ""
+		},
+		{
+			"key": "_locations",
 			"value": ""
 		}
 	]
