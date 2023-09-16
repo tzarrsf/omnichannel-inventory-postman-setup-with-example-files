@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "42f3907f-f1ba-48c3-8fcd-59c620245f6b",
+		"_postman_id": "eb81f53c-b304-4b15-a033-1b2cd41d478b",
 		"name": "OCI PLC Collection",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "8399406"
@@ -2288,11 +2288,11 @@
 			"value": ""
 		},
 		{
-			"key": "_locationGroups",
+			"key": "_locationIdentifiers",
 			"value": ""
 		},
 		{
-			"key": "_locationIdentifiers",
+			"key": "_locationGroups",
 			"value": ""
 		},
 		{
