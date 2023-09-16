@@ -1374,7 +1374,7 @@
 					"response": []
 				},
 				{
-					"name": "3. Log in as System Administrator",
+					"name": "3. Log in as System Administrator (SOAP)",
 					"event": [
 						{
 							"listen": "test",
@@ -1408,6 +1408,7 @@
 							"script": {
 								"exec": [
 									"console.log('Log in as System Administrator Pre-request Script...');\r",
+									"console.log('Collection variables before:\\r\\n'.concat(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','apiVersion'];\r",
 									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
@@ -2184,6 +2185,22 @@
 		},
 		{
 			"key": "_locations",
+			"value": ""
+		},
+		{
+			"key": "_token",
+			"value": ""
+		},
+		{
+			"key": "_instanceUrl",
+			"value": ""
+		},
+		{
+			"key": "_userId",
+			"value": ""
+		},
+		{
+			"key": "_orgId",
 			"value": ""
 		}
 	]
