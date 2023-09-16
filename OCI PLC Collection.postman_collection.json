@@ -1143,7 +1143,7 @@
 									"const expectedStringsInCollectionVariables = ['_importJobId'];\r",
 									"expectedStringsInCollectionVariables.forEach(esicv => {\r",
 									"    if(pm.environment.get(esicv) === undefined) {\r",
-									"        const msg = 'Expected Postman collection variable found: ' + esicv;\r",
+									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
 									"        console.log(msg);\r",
 									"        throw new Error(msg);\r",
 									"    }\r",
