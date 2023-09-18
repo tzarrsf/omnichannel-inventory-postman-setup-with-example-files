@@ -28,9 +28,9 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 
 ## Standardized variables (also documented in the Postman collection)
 
-The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible.
+⚠️ **_Note_**: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
 
-The collection relies on the following variables:
+This Postman collection relies on the following variables:
 
 | Name | Description | Location |
 | --- | --- | --- |
@@ -54,6 +54,6 @@ The collection relies on the following variables:
 | `buyerPassword` | Registered B2B Buyer User's password. | User supplied. |
 | `buyerAccountName` | Name of the Account used to look up the Accoujnt Id which is tied to the Buyer User. | User supplied. Example: `United Coffee Bean Corp` |
 
-Consult the course documentation for details.
+Consult the course documentation for additional details.
 
 
