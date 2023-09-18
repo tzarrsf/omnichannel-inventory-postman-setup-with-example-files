@@ -8,7 +8,7 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 2. Get Running Import Jobs
 3. Get and Delete Import Jobs
 4. Get Inventory Availability (Log In Flow + Connect API)
-5. Get Inventory Availability (Connect API) oAuth 2.0
+5. Get Inventory Availability (oAuth Flow + Connect API)
 
 ## Example inventory upload files are provided for:
 
