@@ -20,12 +20,6 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 - Postman_OCI
 - Postman_OCI_ConnectApi
 
-## These variables in the environment can be altered for your Connect API calls as long as they are comma delimited:
-
-1. productStockKeepingUnitsCommaDelimited - e.g: PROSE,B-C-COFMAC-001,ESP-IOT-1,ID-PEM,PS-EL,PS-INF,TR-COFMAC-001
-2. locationGroupIdentifiersCommaDelimited - e.g: LocationGroup01,LocationGroup02
-3. locationIdentifiersCommaDelimited - e.g: Warehouse01,CaliforniaWarehouse,VirginiaWarehouse,Toronto Facility
-
 ## Standardized variables (also documented in the Postman collection)
 
 ⚠️ **_Note_**: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
@@ -58,5 +52,3 @@ This Postman collection relies on the following variables:
 | `buyerAccountName` | Name of the Account used to look up the Accoujnt Id which is tied to the Buyer User. | User supplied. Example: `United Coffee Bean Corp` |
 
 Consult the course documentation for additional details.
-
-
