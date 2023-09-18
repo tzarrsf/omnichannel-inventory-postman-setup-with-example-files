@@ -26,9 +26,9 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 2. locationGroupIdentifiersCommaDelimited - e.g: LocationGroup01,LocationGroup02
 3. locationIdentifiersCommaDelimited - e.g: Warehouse01,CaliforniaWarehouse,VirginiaWarehouse,Toronto Facility
 
-### Standard variables (also documented in the collection
+## Standardized variables (also documented in the Postman collection)
 
-## Variables
+The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible.
 
 The collection relies on the following variables:
 
