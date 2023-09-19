@@ -2226,19 +2226,21 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"const isTokenMissing = !pm.request.auth.oauth2.has('accessToken')",
-							"    || pm.request.auth.oauth2.get('accessToken') === undefined",
-							"    || pm.request.auth.oauth2.get('accessToken') === null",
-							"    || pm.request.auth.oauth2.get('accessToken').length === 0;",
+							"if(pm.request.auth !== undefined && pm.request.auth.oauth2 !== undefined) {",
+							"    const isTokenMissing = !pm.request.auth.oauth2.has('accessToken')",
+							"        || pm.request.auth.oauth2.get('accessToken') === undefined",
+							"        || pm.request.auth.oauth2.get('accessToken') === null",
+							"        || pm.request.auth.oauth2.get('accessToken').length === 0;",
 							"",
-							"if(isTokenMissing) {",
-							"    const msg = 'No Soup for you! oAuth 2.0 token not found. Steps to fix this:\\r\\n' + ",
-							"    '1. Click on this folder\\'s \"Authorization\" tab\\r\\n' +",
-							"    '2. Click the \"Get New Access Token\" button\\r\\n' +",
-							"    '3. Click the \"Proceed\" button\\r\\n' + ",
-							"    '4. Click the \"Use Token\" button\\r\\n' +",
-							"    '5. Retry your request';",
-							"    pm.expect.fail(msg);",
+							"    if(isTokenMissing) {",
+							"        const msg = 'No Soup for you! oAuth 2.0 token not found. Steps to fix this:\\r\\n' + ",
+							"        '1. Click on this folder\\'s \"Authorization\" tab\\r\\n' +",
+							"        '2. Click the \"Get New Access Token\" button\\r\\n' +",
+							"        '3. Click the \"Proceed\" button\\r\\n' + ",
+							"        '4. Click the \"Use Token\" button\\r\\n' +",
+							"        '5. Retry your request';",
+							"        pm.expect.fail(msg);",
+							"    }",
 							"}"
 						]
 					}
