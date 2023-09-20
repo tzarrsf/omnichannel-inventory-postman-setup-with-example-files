@@ -38,7 +38,7 @@
 									"console.log('1. Clear Collection Variables Tests...');\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
-									"    pm.expect(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value)).to.be.an('array').empty;\r",
+									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -95,8 +95,7 @@
 									"\r",
 									"pm.expect(pm.environment.name !== null);\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','JWT'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -178,8 +177,7 @@
 									"\r",
 									"pm.expect(pm.environment.name !== null);\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host', 'tenantId', 'bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host', 'tenantId', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -229,8 +227,7 @@
 									"",
 									"pm.expect(pm.environment.name !== null);",
 									"",
-									"const expectedStringsInEnvironmentVariables = ['host', 'tenantId', 'bearerToken', 'locationInventoryImportInitiateBody'];",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {",
+									"['host', 'tenantId', 'bearerToken', 'locationInventoryImportInitiateBody'].forEach(esiev => {",
 									"    if(!pm.environment.has(esiev)) {",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;",
 									"        pm.expect.fail(msg);",
@@ -352,8 +349,7 @@
 									"console.log('5. Post Inventory Import File Pre-request Script...')\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host', 'locationInventoryImportUploadLink', 'importsUploadLinkPostBody'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host', 'locationInventoryImportUploadLink', 'importsUploadLinkPostBody'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -437,8 +433,7 @@
 									"pm.expect(pm.environment.get('locationInventoryImportStatusLink')).to.exist;\r",
 									"pm.expect(pm.environment.get('locationInventoryImportStatusLink')).to.be.an('string');\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host', 'locationInventoryImportStatusLink', 'bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host', 'locationInventoryImportStatusLink', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -503,8 +498,7 @@
 									"console.log('7. Get Inventory Import Results Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host', 'locationInventoryImportResultsLink', 'bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host', 'locationInventoryImportResultsLink', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -547,7 +541,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -565,10 +559,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('Clear Collection Variables Tests...');\r",
+									"console.log('1. Clear Collection Variables Tests...');\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
-									"    pm.expect(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value)).to.be.an('array').empty;\r",
+									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -598,7 +592,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('Get Access Token Tests...');\r",
+									"console.log('2. Get Access Token Tests...');\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -621,11 +615,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('Get Access Token Pre-request Script...');\r",
+									"console.log('2. Get Access Token Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','JWT'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -689,7 +682,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('Authenticate into Org Tests...');",
+									"console.log('3. Authenticate into Org Tests...');",
 									"",
 									"pm.test('Status code is 204', () => {",
 									"    pm.response.to.have.status(204);",
@@ -702,11 +695,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('Authenticate into Org Pre-request Script...');\r",
+									"console.log('3. Authenticate into Org Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -751,7 +743,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('Get Jobs Tests...');\r",
+									"console.log('4. Get Jobs Tests...');\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -794,11 +786,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('Get Jobs Pre-request Script...');\r",
+									"console.log('4. Get Jobs Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -871,7 +862,7 @@
 									"console.log('1. Clear Collection Variables Tests...');\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
-									"    pm.expect(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value)).to.be.an('array').empty;\r",
+									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -926,8 +917,7 @@
 									"console.log('2. Get Access Token Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','JWT'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1010,8 +1000,7 @@
 									"console.log('3. Authenticate into Org Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1102,8 +1091,7 @@
 									"console.log('4. Get Jobs Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1184,8 +1172,7 @@
 									"const importJobIds = pm.collectionVariables.get('_importJobIds');\r",
 									"pm.collectionVariables.set('_importJobId', importJobIds[0]);\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1194,8 +1181,7 @@
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
 									"});\r",
 									"\r",
-									"const expectedStringsInCollectionVariables = ['_importJobId'];\r",
-									"expectedStringsInCollectionVariables.forEach(esicv => {\r",
+									"['_importJobId'].forEach(esicv => {\r",
 									"    if(!pm.collectionVariables.has(esicv)) {\r",
 									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1243,7 +1229,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log(\"6. Get Jobs Tests...\");\r",
+									"console.log('6. Get Jobs Tests...');\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1289,8 +1275,7 @@
 									"console.log('6. Get Jobs Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['host','tenantId','bearerToken'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1364,7 +1349,7 @@
 									"console.log('1. Clear Collection Variables Tests...');\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
-									"    pm.expect(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value)).to.be.an('array').empty;\r",
+									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1432,8 +1417,7 @@
 									"console.log('2. Authenticate Connected App Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','JWT'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1531,8 +1515,7 @@
 									"console.log('3. Log in as System Administrator Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgLoginUrl','apiVersion'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgLoginUrl','apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1597,8 +1580,7 @@
 									"console.log('4. Get Availability by Location Group Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgHostMySalesforceFormat', 'apiVersion'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1723,8 +1705,7 @@
 									"console.log('5. Get Availability by Location Group Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgHostMySalesforceFormat', 'apiVersion'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -1850,7 +1831,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('Clear Collection Variables Pre-request Script...');\r",
+									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -1871,7 +1852,7 @@
 									"console.log('1. Clear Collection Variables Tests...');\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
-									"    pm.expect(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value)).to.be.an('array').empty;\r",
+									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
 									"});"
 								],
 								"type": "text/javascript"
@@ -1879,6 +1860,9 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -1895,23 +1879,159 @@
 					"response": []
 				},
 				{
-					"name": "2. Get Availability by Location Group",
+					"name": "2. Set your oAuth 2.0 Token in Authorization tab",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('2. Get Availability by Location Group Pre-request Script...');\r",
+									"console.log('2. Set your oAuth 2.0 Token here in Authorization tab Pre-request Script');\r",
+									"console.log('Checking oAuth has been set up...');\r",
+									"\r",
+									"const isTokenMissing = pm.request.auth === undefined\r",
+									"    || pm.request.auth.oauth2 === undefined\r",
+									"    || !pm.request.auth.oauth2.has('accessToken')\r",
+									"    || pm.request.auth.oauth2.get('accessToken') === undefined\r",
+									"    || pm.request.auth.oauth2.get('accessToken') === null\r",
+									"    || pm.request.auth.oauth2.get('accessToken').length === 0;\r",
+									"\r",
+									"pm.test('oAuth 2.0 Token is present', () => {\r",
+									"    pm.expect(isTokenMissing === false);\r",
+									"    pm.expect(pm.request.auth).to.exist;\r",
+									"    pm.expect(pm.request.auth).to.be.an('object');\r",
+									"    pm.expect(pm.request.auth.oauth2).to.exist;\r",
+									"    pm.expect(pm.request.auth.oauth2).to.be.an('object');\r",
+									"    pm.expect(pm.request.auth.oauth2.has('accessToken')).to.be.true;\r",
+									"    pm.expect(pm.request.auth.oauth2.get('accessToken')).to.exist;\r",
+									"    pm.expect(pm.request.auth.oauth2.get('accessToken')).to.be.an('string').with.length.greaterThan(0);\r",
+									"});\r",
+									"\r",
+									"if(isTokenMissing) {\r",
+									"    const msg = 'No Soup for you! oAuth 2.0 token not found. Steps to fix the issue:\\r\\n' + \r",
+									"    '1. Click on the Request with a name like \"Set your oAuth 2.0 Token here in Authorization tab\"\\r\\n' +\r",
+									"    '2. Click the \"Authorization\" tab\\r\\n' + \r",
+									"    '3. Click the \"Get New Access Token\" button\\r\\n' +\r",
+									"    '4. Click the \"Proceed\" button\\r\\n' + \r",
+									"    '5. Click the \"Use Token\" button\\r\\n' +\r",
+									"    '6. Retry your request';\r",
+									"    console.log(msg);\r",
+									"    pm.expect.fail('No Soup for you! oAuth 2.0 token not found. See steps above for a fix.');\r",
+									"}\r",
+									"else\r",
+									"{\r",
+									"    pm.collectionVariables.set('_token', pm.request.auth.oauth2.get('accessToken'));\r",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"console.log('2. Set your oAuth 2.0 Token here in Authorization tab Tests');"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "client_authentication",
+									"value": "body",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "{{orgAdminPassword}}{{orgAdminSecurityToken}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{orgAdminUsername}}",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "{{connectedAppConsumerSecret}}",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "{{connectedAppConsumerKey}}",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "{{orgLoginUrl}}/services/oauth2/token",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "password_credentials",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "SF Token",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": true,
+									"type": "boolean"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "postman-echo.com/get",
+							"host": [
+								"postman-echo",
+								"com"
+							],
+							"path": [
+								"get"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "3. Get Availability by Location Group",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"console.log('3. Get Availability by Location Group Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgHostMySalesforceFormat', 'apiVersion'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
 									"    }\r",
 									"    pm.expect(pm.environment.get(esiev)).to.exist;\r",
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
+									"});\r",
+									"\r",
+									"['_token'].forEach(esicv => {\r",
+									"    if(!pm.collectionVariables.has(esicv)) {\r",
+									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
+									"        pm.expect.fail(msg);\r",
+									"    }\r",
+									"    pm.expect(pm.collectionVariables.get(esicv)).to.exist;\r",
+									"    pm.expect(pm.collectionVariables.get(esicv)).to.be.an('string');\r",
 									"});\r",
 									"\r",
 									"console.log('Parsing and assigning locationGroupIdentifiers...');\r",
@@ -1933,7 +2053,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Get Availability by Location Group Tests...');\r",
+									"console.log('3. Get Availability by Location Group Tests...');\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -1979,6 +2099,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2011,23 +2141,31 @@
 					"response": []
 				},
 				{
-					"name": "3. Get Availability by Location",
+					"name": "4. Get Availability by Location",
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Get Availability by Location Pre-request Script...');\r",
+									"console.log('4. Get Availability by Location Pre-request Script...');\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
-									"const expectedStringsInEnvironmentVariables = ['orgHostMySalesforceFormat', 'apiVersion'];\r",
-									"expectedStringsInEnvironmentVariables.forEach(esiev => {\r",
+									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
 									"    }\r",
 									"    pm.expect(pm.environment.get(esiev)).to.exist;\r",
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
+									"});\r",
+									"\r",
+									"['_token'].forEach(esicv => {\r",
+									"    if(!pm.collectionVariables.has(esicv)) {\r",
+									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
+									"        pm.expect.fail(msg);\r",
+									"    }\r",
+									"    pm.expect(pm.collectionVariables.get(esicv)).to.exist;\r",
+									"    pm.expect(pm.collectionVariables.get(esicv)).to.be.an('string');\r",
 									"});\r",
 									"\r",
 									"console.log('Parsing and assigning locationIdentifiers...');\r",
@@ -2049,7 +2187,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Get Availability by Location Tests...');\r",
+									"console.log('4. Get Availability by Location Tests...');\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
@@ -2094,6 +2232,16 @@
 						}
 					],
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{_token}}",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -2127,89 +2275,7 @@
 				}
 			],
 			"auth": {
-				"type": "oauth2",
-				"oauth2": [
-					{
-						"key": "scope",
-						"value": "",
-						"type": "string"
-					},
-					{
-						"key": "password",
-						"value": "{{orgAdminPassword}}{{orgAdminSecurityToken}}",
-						"type": "string"
-					},
-					{
-						"key": "username",
-						"value": "{{orgAdminUsername}}",
-						"type": "string"
-					},
-					{
-						"key": "grant_type",
-						"value": "password_credentials",
-						"type": "string"
-					},
-					{
-						"key": "authUrl",
-						"value": "{{orgLoginUrl}}",
-						"type": "string"
-					},
-					{
-						"key": "accessTokenUrl",
-						"value": "{{orgLoginUrl}}/services/oauth2/token",
-						"type": "string"
-					},
-					{
-						"key": "client_authentication",
-						"value": "body",
-						"type": "string"
-					},
-					{
-						"key": "clientSecret",
-						"value": "{{connectedAppConsumerSecret}}",
-						"type": "string"
-					},
-					{
-						"key": "clientId",
-						"value": "{{connectedAppConsumerKey}}",
-						"type": "string"
-					},
-					{
-						"key": "tokenName",
-						"value": "SF Token",
-						"type": "string"
-					},
-					{
-						"key": "refreshRequestParams",
-						"value": [],
-						"type": "any"
-					},
-					{
-						"key": "tokenRequestParams",
-						"value": [],
-						"type": "any"
-					},
-					{
-						"key": "authRequestParams",
-						"value": [],
-						"type": "any"
-					},
-					{
-						"key": "challengeAlgorithm",
-						"value": "S256",
-						"type": "string"
-					},
-					{
-						"key": "useBrowser",
-						"value": true,
-						"type": "boolean"
-					},
-					{
-						"key": "addTokenTo",
-						"value": "header",
-						"type": "string"
-					}
-				]
+				"type": "noauth"
 			},
 			"event": [
 				{
@@ -2226,22 +2292,7 @@
 					"script": {
 						"type": "text/javascript",
 						"exec": [
-							"if(pm.request.auth !== undefined && pm.request.auth.oauth2 !== undefined) {",
-							"    const isTokenMissing = !pm.request.auth.oauth2.has('accessToken')",
-							"        || pm.request.auth.oauth2.get('accessToken') === undefined",
-							"        || pm.request.auth.oauth2.get('accessToken') === null",
-							"        || pm.request.auth.oauth2.get('accessToken').length === 0;",
-							"",
-							"    if(isTokenMissing) {",
-							"        const msg = 'No Soup for you! oAuth 2.0 token not found. Steps to fix this:\\r\\n' + ",
-							"        '1. Click on this folder\\'s \"Authorization\" tab\\r\\n' +",
-							"        '2. Click the \"Get New Access Token\" button\\r\\n' +",
-							"        '3. Click the \"Proceed\" button\\r\\n' + ",
-							"        '4. Click the \"Use Token\" button\\r\\n' +",
-							"        '5. Retry your request';",
-							"        pm.expect.fail(msg);",
-							"    }",
-							"}"
+							""
 						]
 					}
 				}
@@ -2324,23 +2375,11 @@
 	],
 	"variable": [
 		{
-			"key": "_locationGroupIdentifiers",
+			"key": "_importJobIds",
 			"value": ""
 		},
 		{
-			"key": "_productStockKeepingUnits",
-			"value": ""
-		},
-		{
-			"key": "_locationGroups",
-			"value": ""
-		},
-		{
-			"key": "_locationIdentifiers",
-			"value": ""
-		},
-		{
-			"key": "_locations",
+			"key": "_importJobId",
 			"value": ""
 		}
 	]
