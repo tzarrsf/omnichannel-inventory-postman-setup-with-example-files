@@ -1506,7 +1506,7 @@
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"// Expected strings in environment variables\r",
-									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
+									"['orgLoginUrl'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
 									"        pm.expect.fail(msg);\r",
@@ -2508,12 +2508,6 @@
 					""
 				]
 			}
-		}
-	],
-	"variable": [
-		{
-			"key": "_importJobIds",
-			"value": ""
 		}
 	]
 }
