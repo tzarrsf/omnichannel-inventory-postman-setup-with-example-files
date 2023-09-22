@@ -1771,9 +1771,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{orgHostMySalesforceFormat}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
+							"raw": "{{_instanceUrl}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
 							"host": [
-								"{{orgHostMySalesforceFormat}}"
+								"{{_instanceUrl}}"
 							],
 							"path": [
 								"services",
@@ -1900,9 +1900,9 @@
 							}
 						},
 						"url": {
-							"raw": "{{orgHostMySalesforceFormat}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
+							"raw": "{{_instanceUrl}}/services/data/v{{apiVersion}}/commerce/oci/availability/availability-records/actions/get-availability",
 							"host": [
-								"{{orgHostMySalesforceFormat}}"
+								"{{_instanceUrl}}"
 							],
 							"path": [
 								"services",
@@ -2508,6 +2508,32 @@
 					""
 				]
 			}
+		}
+	],
+	"variable": [
+		{
+			"key": "_token",
+			"value": ""
+		},
+		{
+			"key": "_locationGroupIdentifiers",
+			"value": ""
+		},
+		{
+			"key": "_productStockKeepingUnits",
+			"value": ""
+		},
+		{
+			"key": "_locationGroups",
+			"value": ""
+		},
+		{
+			"key": "_locationIdentifiers",
+			"value": ""
+		},
+		{
+			"key": "_locations",
+			"value": ""
 		}
 	]
 }
