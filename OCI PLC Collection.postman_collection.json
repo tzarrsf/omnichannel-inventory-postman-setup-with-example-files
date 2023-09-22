@@ -17,7 +17,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -35,7 +35,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
 									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
@@ -68,7 +68,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Get Access Token Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -90,11 +90,12 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log(`2. Get Access Token Pre-request Script...`);\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"pm.expect(pm.environment.name !== null);\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -159,7 +160,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"pm.test('Status code is 204', () => {",
 									"    pm.response.to.have.status(204);",
@@ -172,11 +173,12 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"pm.expect(pm.environment.name !== null);\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host', 'tenantId', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -222,11 +224,12 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('4. Get Inventory Import Link Pre-request Script...');",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));",
 									"",
 									"pm.expect(pm.environment.name !== null);",
 									"",
+									"// Expected strings in environment variables",
 									"['host', 'tenantId', 'bearerToken', 'locationInventoryImportInitiateBody'].forEach(esiev => {",
 									"    if(!pm.environment.has(esiev)) {",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;",
@@ -254,7 +257,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('4. Get Inventory Import Link Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"pm.test('Status code is 200', () => {",
 									"    pm.response.to.have.status(200);",
@@ -333,7 +336,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('5. Post Inventory Import File Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -346,9 +349,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('5. Post Inventory Import File Pre-request Script...')\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host', 'locationInventoryImportUploadLink', 'importsUploadLinkPostBody'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -397,7 +401,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('6. Get Inventory Import Status Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"pm.test('Status code is 200', () => {",
 									"    pm.response.to.have.status(200);",
@@ -426,13 +430,14 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('6. Get Inventory Import Status Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"pm.expect(pm.environment.name !== null);\r",
 									"pm.expect(pm.environment.get('locationInventoryImportStatusLink')).to.exist;\r",
 									"pm.expect(pm.environment.get('locationInventoryImportStatusLink')).to.be.an('string');\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host', 'locationInventoryImportStatusLink', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -472,7 +477,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('7. Get Inventory Import Results Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"utils.responseCodeCheck(pm, postman, 200, request);",
 									"",
@@ -495,9 +500,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('7. Get Inventory Import Results Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host', 'locationInventoryImportResultsLink', 'bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -529,10 +535,33 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
-			"name": "Get Running Jobs",
+			"name": "Get Import Jobs",
 			"item": [
 				{
 					"name": "1. Clear Collection Variables",
@@ -541,7 +570,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -559,7 +588,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
 									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
@@ -592,7 +621,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Get Access Token Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -615,9 +644,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('2. Get Access Token Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -682,7 +712,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"pm.test('Status code is 204', () => {",
 									"    pm.response.to.have.status(204);",
@@ -695,9 +725,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -743,7 +774,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('4. Get Jobs Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -786,9 +817,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('4. Get Jobs Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -829,6 +861,29 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -841,7 +896,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -859,7 +914,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
 									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
@@ -892,7 +947,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Get Access Token Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -914,9 +969,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('2. Get Access Token Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -984,7 +1040,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Tests...');",
+									"console.log(`${pm.info.requestName} Tests...`);",
 									"",
 									"pm.test('Status code is 204', () => {",
 									"    pm.response.to.have.status(204);",
@@ -997,7 +1053,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Authenticate into Org Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
@@ -1045,7 +1101,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log(\"4. Get Jobs Tests...\");\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1057,8 +1113,9 @@
 									"     pm.response.to.be.json;\r",
 									"});\r",
 									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
 									"pm.test('Validate the response and save the import job ids array to collection variables', () => {\r",
-									"    const jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.imports).to.exist;\r",
 									"    pm.expect(jsonData.imports).to.be.an('array');\r",
 									"    const importJobIds = jsonData.imports;\r",
@@ -1070,7 +1127,6 @@
 									"There's a case in which the response is not JSON and the HTTP 403 Forbidden status doesn't come through as a header. However, it's in the HTML body.\r",
 									"*/\r",
 									"try {\r",
-									"    const jsonData = pm.response.json();\r",
 									"    pm.environment.set('locationInventoryImportId', jsonData.importId);\r",
 									"    pm.environment.set('locationInventoryImportStatusLink', jsonData.importStatusLink);\r",
 									"    pm.environment.set('locationInventoryImportUploadLink', jsonData.uploadLink);\r",
@@ -1088,9 +1144,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('4. Get Jobs Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1138,7 +1195,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('5. Delete First Job in Collection Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"pm.test('Status code is 204', () => {\r",
@@ -1167,11 +1224,17 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('5. Delete First Job in Collection Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"const importJobIds = pm.collectionVariables.get('_importJobIds');\r",
+									"\r",
+									"if(importJobIds === undefined || importJobIds === null || importJobIds.length === 0) {\r",
+									"    pm.expect.fail('No jobs to delete. Try running the \"Upload Inventory (Happy Path)\" folder once or twice to create some.');\r",
+									"}\r",
+									"\r",
 									"pm.collectionVariables.set('_importJobId', importJobIds[0]);\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1181,6 +1244,7 @@
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
 									"});\r",
 									"\r",
+									"// Expected strings in collection variables\r",
 									"['_importJobId'].forEach(esicv => {\r",
 									"    if(!pm.collectionVariables.has(esicv)) {\r",
 									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
@@ -1229,7 +1293,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('6. Get Jobs Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1241,8 +1305,9 @@
 									"     pm.response.to.be.json;\r",
 									"});\r",
 									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
 									"pm.test('Validate the response and save the import job ids array to collection variables', () => {\r",
-									"    const jsonData = pm.response.json();\r",
 									"    pm.expect(jsonData.imports).to.exist;\r",
 									"    pm.expect(jsonData.imports).to.be.an('array');\r",
 									"    const importJobIds = jsonData.imports;\r",
@@ -1254,7 +1319,6 @@
 									"There's a case in which the response is not JSON and the HTTP 403 Forbidden status doesn't come through as a header. However, it's in the HTML body.\r",
 									"*/\r",
 									"try {\r",
-									"    const jsonData = pm.response.json();\r",
 									"    pm.environment.set('locationInventoryImportId', jsonData.importId);\r",
 									"    pm.environment.set('locationInventoryImportStatusLink', jsonData.importStatusLink);\r",
 									"    pm.environment.set('locationInventoryImportUploadLink', jsonData.uploadLink);\r",
@@ -1272,9 +1336,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('6. Get Jobs Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['host','tenantId','bearerToken'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1316,6 +1381,29 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -1328,7 +1416,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -1346,7 +1434,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
 									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
@@ -1379,7 +1467,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Authenticate Connected App Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1414,9 +1502,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('2. Authenticate Connected App Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgLoginUrl','JWT'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1485,7 +1574,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Log in as System Administrator Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(JSON.parse(JSON.stringify(pm.collectionVariables.values)).map((v) => v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
 									"pm.test('Status code is 200', () => {\r",
@@ -1512,9 +1601,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Log in as System Administrator Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgLoginUrl','apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1577,9 +1667,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('4. Get Availability by Location Group Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1608,10 +1699,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('4. Get Availability by Location Group Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Success true in response', () => {\r",
+									"    pm.expect(jsonData.success).to.be.true;\r",
 									"});\r",
 									"\r",
 									"pm.test('Response is valid and has a JSON body', () => {\r",
@@ -1621,8 +1718,6 @@
 									"});\r",
 									"\r",
 									"pm.test('Validate the response', () => {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    \r",
 									"    pm.expect(jsonData.locationGroups).to.exist;\r",
 									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
 									"    \r",
@@ -1702,9 +1797,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('5. Get Availability by Location Group Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -1733,10 +1829,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('5. Get Availability by Location Group Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Success true in response', () => {\r",
+									"    pm.expect(jsonData.success).to.be.true;\r",
 									"});\r",
 									"\r",
 									"pm.test('Response is valid and has a JSON body', () => {\r",
@@ -1746,8 +1848,6 @@
 									"});\r",
 									"\r",
 									"pm.test('Validate the response', () => {\r",
-									"    const jsonData = pm.response.json();\r",
-									"    \r",
 									"    pm.expect(jsonData.locationGroups).to.exist;\r",
 									"    pm.expect(jsonData.locationGroups).to.be.an('array');\r",
 									"\r",
@@ -1819,6 +1919,29 @@
 					},
 					"response": []
 				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
 			]
 		},
 		{
@@ -1831,7 +1954,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"\r",
 									"// Check for environment selection\r",
 									"if(pm.environment.name === undefined) {\r",
@@ -1849,7 +1972,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('1. Clear Collection Variables Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Make sure collection variables are clean', () => {\r",
 									"    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;\r",
@@ -1885,7 +2008,7 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('2. Set your oAuth 2.0 Token here in Authorization tab Pre-request Script');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Checking oAuth has been set up...');\r",
 									"\r",
 									"const isTokenMissing = pm.request.auth === undefined\r",
@@ -1919,6 +2042,8 @@
 									"}\r",
 									"else\r",
 									"{\r",
+									"    const tokenAgeInMnutes = Math.floor(Math.floor((new Date().getTime() - pm.request.auth.oauth2.get('timestamp')) / 1000) / 60);\r",
+									"    console.warn(`Token age: ${tokenAgeInMnutes} minutes`);\r",
 									"    pm.collectionVariables.set('_token', pm.request.auth.oauth2.get('accessToken'));\r",
 									"}"
 								],
@@ -1929,7 +2054,7 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('2. Set your oAuth 2.0 Token here in Authorization tab Tests');"
+									"console.log(`${pm.info.requestName} Tests...`);"
 								],
 								"type": "text/javascript"
 							}
@@ -2013,9 +2138,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('3. Get Availability by Location Group Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -2025,6 +2151,7 @@
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
 									"});\r",
 									"\r",
+									"// Expected strings in collection variables\r",
 									"['_token'].forEach(esicv => {\r",
 									"    if(!pm.collectionVariables.has(esicv)) {\r",
 									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
@@ -2053,10 +2180,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('3. Get Availability by Location Group Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Success true in response', () => {\r",
+									"    pm.expect(jsonData.success).to.be.true;\r",
 									"});\r",
 									"\r",
 									"pm.test('Response is valid and has a JSON body', () => {\r",
@@ -2064,8 +2197,6 @@
 									"     pm.response.to.be.withBody;\r",
 									"     pm.response.to.be.json;\r",
 									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
 									"\r",
 									"pm.test('Validate the response', () => {\r",
 									"    pm.expect(jsonData.locationGroups).to.exist;\r",
@@ -2147,9 +2278,10 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"console.log('4. Get Availability by Location Pre-request Script...');\r",
+									"console.log(`${pm.info.requestName} Pre-request Script...`);\r",
 									"console.log('Collection variables before:\\r\\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\\r\\n')));\r",
 									"\r",
+									"// Expected strings in environment variables\r",
 									"['orgHostMySalesforceFormat', 'apiVersion'].forEach(esiev => {\r",
 									"    if(!pm.environment.has(esiev)) {\r",
 									"        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;\r",
@@ -2159,6 +2291,7 @@
 									"    pm.expect(pm.environment.get(esiev)).to.be.an('string');\r",
 									"});\r",
 									"\r",
+									"// Expected strings in collection variables\r",
 									"['_token'].forEach(esicv => {\r",
 									"    if(!pm.collectionVariables.has(esicv)) {\r",
 									"        const msg = 'Expected Postman collection variable not found: ' + esicv;\r",
@@ -2187,10 +2320,16 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									"console.log('4. Get Availability by Location Tests...');\r",
+									"console.log(`${pm.info.requestName} Tests...`);\r",
 									"\r",
 									"pm.test('Status code is 201', () => {\r",
 									"    pm.response.to.have.status(201);\r",
+									"});\r",
+									"\r",
+									"const jsonData = pm.response.json();\r",
+									"\r",
+									"pm.test('Success true in response', () => {\r",
+									"    pm.expect(jsonData.success).to.be.true;\r",
 									"});\r",
 									"\r",
 									"pm.test('Response is valid and has a JSON body', () => {\r",
@@ -2198,8 +2337,6 @@
 									"     pm.response.to.be.withBody;\r",
 									"     pm.response.to.be.json;\r",
 									"});\r",
-									"\r",
-									"const jsonData = pm.response.json();\r",
 									"\r",
 									"pm.test('Validate the response', () => {\r",
 									"    pm.expect(jsonData.locationGroups).to.exist;\r",
@@ -2376,10 +2513,6 @@
 	"variable": [
 		{
 			"key": "_importJobIds",
-			"value": ""
-		},
-		{
-			"key": "_importJobId",
 			"value": ""
 		}
 	]
