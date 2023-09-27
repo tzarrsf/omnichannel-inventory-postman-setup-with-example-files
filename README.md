@@ -20,6 +20,46 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
 - Postman_OCI
 - Postman_OCI_ConnectApi
 
+## oAuth 2.0 is set __once__ in each folder
+
+Please don't take a "do-it-yourself" approach here. Why?
+
+1. Most importantly, you don't need to.
+2. There's some scripting which checks your token set up is correct to begin making requests
+3. Tokens are passed in subsequent requests using __Bearer Token__ authentication on the requests needing it
+4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact when oAuth is needed.
+5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request
+
+### Key points
+
+A. Look for the request with a name like "Set your oAuth 2.0 Token in Authorization tab"
+B. Don't try to do a bunch of manual work on your token setup or get fancy as it's all filled in for you already using variables.
+
+Just follow these steps which will also be provided during an oAuth error state in Postman's __Console__ as errors:
+
+1. Click on the Request with a name like "Set your oAuth 2.0 Token here in Authorization tab"
+2. Click the "Authorization" tab
+3. Click the "Get New Access Token" button
+4. Click the "Proceed" button
+5. Click the "Use Token" button
+6. Optional - Use the delete button's dropdown option to remove expired tokens (it's best to remove all of them except the newest)
+7. Retry your request(s)
+
+## Variables
+
+__Note__: You must set up your environment variables correctly for this all to work. Collection variables will be calculated between requests and used in subsequent  requests. The naming convention used in the collection is to prefix with an underscore for collection variables.
+
+### Environment variables can be used to provide comma delimited values for these values
+
+ 1. productNamesCommaDelimited (used in the B2B Postman collection) 
+ 2. productStockKeepingUnitsCommaDelimited
+ 3. locationGroupIdentifiersCommaDelimited
+ 4. locationIdentifiersCommaDelimited
+
+### Environment variables can be used to provide a string value for these values
+
+ 1. productSearchTerm (used in the B2B Postman collection)
+
 ## Standardized variables (also documented in the Postman collection)
 
 ⚠️ **_Note_**: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
