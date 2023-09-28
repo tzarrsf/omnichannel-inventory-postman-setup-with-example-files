@@ -137,13 +137,14 @@ Whatever the request is named in the user interface is reflected dynamically by 
 
 `console.log(`${pm.info.requestName} Tests...`);`
 
-If you called the request Heinz 57 you will see "Heinz 57 Pre-request..." or "Heinz 57 Tests..." in the console. In between that you can drill into your request and response bodies as needed.
+If you called the request "Heinz 57" you will see `Heinz 57 Pre-request...` or `Heinz 57 Tests...` in the console. You can drill into your request and response bodies as needed knowing what was passed to the endpoint.
 
 ### Requests must meet Preconditions
 
 If environment variables are expected for a request they are tested on the Pre-request script tab:
 
-`// Expected strings in environment variables
+`
+// Expected strings in environment variables
 ['host', 'tenantId', 'bearerToken'].forEach(esiev => {
     if(!pm.environment.has(esiev)) {
         const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;
@@ -151,11 +152,13 @@ If environment variables are expected for a request they are tested on the Pre-r
     }
     pm.expect(pm.environment.get(esiev)).to.exist;
     pm.expect(pm.environment.get(esiev)).to.be.an('string');
-});`
+});
+`
 
-If collection variables are expected they are tests on the Pre-request script tab
+If collection variables are expected they are tested on the Pre-request script tab
 
-`// Expected strings in collection variables
+`
+// Expected strings in collection variables
 ['_webStoreId', '_token', '_orgId'].forEach(esicv => {
     if(pm.collectionVariables.get(esicv) === undefined) {
         const msg = 'Expected Postman collection variable not found: ' + esicv;
@@ -163,7 +166,8 @@ If collection variables are expected they are tests on the Pre-request script ta
     }
     pm.expect(pm.collectionVariables.get(esicv)).to.exist;
     pm.expect(pm.collectionVariables.get(esicv)).to.be.an('string');
-});`
+});
+`
 
 ### Collection variables are listed in each Pre-request
 
@@ -171,15 +175,17 @@ This snippet allows you to see things *befoire* each request is made:
 
 `console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));`
 
-Here's an example of all collection variables being printed to the console in a Pre-request script:
+Example of all collection variables being printed to the console in a Pre-request script:
 
-`Collection variables before:↵
+`
+Collection variables before:↵
 _instanceUrl: https://toms-org.my.salesforce.com↵
 _locationGroupIdentifiers: ["LocationGroup01"]↵
 _orgId: 00DHn0000YYYYYYYYY↵
 _productStockKeepingUnits: ["PROSE","B-C-COFMAC-001","ESP-IOT-1","ID-PEM","PS-EL","PS-INF","TR-COFMAC-001"]↵
 _token: 0xdeadbeef!0x8badfood!0xfeedfacecafebeefx.01123581321345589144233377610↵
-_userId: 005HnXXXXXXXXXXXXX`
+_userId: 005HnXXXXXXXXXXXXX
+`
 
 ## Variables
 
@@ -199,13 +205,11 @@ These are good examples as they adhere to the established naming convention and 
 3. `pm.environment.set('myVariable', 'My new value');`
 4. `pm.environment.get('myVariable');`
 
-I don't like mixing which dictionaries I use to get a value. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from (or in rare cases be written to) pm.environment. I don't use a context stand-in object that would allow pulling a value by key from either pm.collectionVariables or pm.environment at runtime. I believe quite strongly in the single definition principal and not coding by coincidence - even with tests and especially with tests. If those terms are not familiar to you I'd recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
+I don't like mixing which dictionaries I use to get a value. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from (or in rare cases be written to) pm.environment. I don't use a context stand-in that would allow pulling or pushing a value by key from either pm.collectionVariables or pm.environment at runtime. I believe quite strongly in the single definition principal and not coding by coincidence - even with tests, actually - especially with tests. If those terms are not familiar I'd like to recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
 
 ### Input values
 
 #### Some Environment variables are used for lookups to support reuse
-
-These are some examples:
 
 1. webstoreName (resolves to a WebStore Id)
 2. buyerAccountName (resolves to an Account Id)
@@ -252,4 +256,7 @@ This Postman collection relies on the following variables:
 | `buyerPassword` | Registered B2B Buyer User's password. | User supplied. |
 | `buyerAccountName` | Name of the Account used to look up the Accoujnt Id which is tied to the Buyer User. | User supplied. Example: `United Coffee Bean Corp` |
 
-Consult the curriculum and course documentation for additional details.
+Please consult the curriculum and course documentation for additional details.
+
+Enjoy the collection!
+- Tom Zarr (tzarr@salesforce.com) September, 2023
