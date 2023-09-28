@@ -1,6 +1,30 @@
-# Omnichannel Inventory Postman Setup with example files
+# Omnichannel Inventory Postman Setup for Partners
+
+_Created by Tom Zarr with key contributions from Sandra Golden and Jordane Bachelet_
 
 This material is supplemental to the Omnichannel Inventory Partner Learning Camp course. See the course for the complete setup including configuring OpenSSL and a JWT (JSON Web Token) on Windows.
+
+This postman collection contains API endpoints from various Salesforce Commerce domains, but the emphasis is on completing B2B Commerce checkouts and performing operational tasks related to that end through the Connect API and other flavors of API available on the Salesforce platform.
+
+Unlike many other Postman collections, this one is meant to be user friendly and have meaningful error messages when something is not set up correctly or there are issues in the request chains.
+
+## ⚠️ Disclaimers
+
+- This collection is provided as-is. It's not officially supported by Salesforce or covered by SLAs.
+- API documentation is not provided with the collection. Please refer to the official documentation.
+- The documentation for the majority of the endpoints in this collection can be found in the [B2B and D2C Commerce Resources](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_commerce.htm) of the Connect REST API Developer Guide.
+
+## What this collection is and isn't
+
+This collection is intended to be used for a B2B standalone setup. That isn't to say you can't use it with a Salesforce Org containing other commerce products, just that B2B is what's targeted.
+
+## Approach
+
+1. I've tried to stay "close to the metal" by using the Postman Scripting API directly. There are a few cases where this just isn't possible or realistic because responses are not true JSON or HTTP status codes are reported in the HTML body text, but those should be true exceptions and definitely not the rule.
+2. I wanted oAuth 2.0 to not be a headache. This is my approach and it's about the best I could come up with given the limitations of the tool. Have a request where you set it once and then everything following just uses Bearer Token. It works and better is the enemy of good enough.
+3. The request chains are long; This is by design. At the risk of being didactic, this is ultimately a *teaching tool*. When it comes to working with APIs I find more detail is better.
+4. Collection variables are calculated and presented before each request.
+5. Tests are applied following each response. If something isn't right I want you to know about it early so I assume little to nothing that a response is successful.
 
 ## This collection provides the following:
 
@@ -16,24 +40,49 @@ This material is supplemental to the Omnichannel Inventory Partner Learning Camp
  2.  Multiple Capricorn Coffee items
  3.  Single item in which you supply the SKU
 
-## You will need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
+## Connected App
+
+Because we're using APIs you'll need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
+
 - Postman_OCI
 - Postman_OCI_ConnectApi
 
-## oAuth 2.0 is set __once__ in each folder
+You will need to obtain some values from your Connected App in order to establish connectivity (see: [Variables](./#Variables))
+
+## Authentication Approach
+
+Authentication is generally handled one of three ways:
+
+1. Logging in as an administrator (often used in the request chain's outset for lookup operations to make things reusable across orgs)
+2. Logging in as a 'known good' Buyer (aka Contact under Account with a User - all three must be set up and this is commonly _not_ going to be the case with a System Administrator account)
+3. Establishing oAuth 2.0 *once per folder* and then having subsequent requests set to Bearer Token in the "Authorization" tab (see [ oAuth 2.0 is set once in each folder](./#oauth-20-is-set-once-per-folder-where-needed)
+
+### Logging in as an Administrator or Buyer
+
+This is handled inline. Just supply the environment with the needed variables like these and the collection and scripting should take care of the rest for you:
+
+| Name | Description
+| --- | --- |
+| `orgLoginUrl` | Either `https://login.salesforce.com` (production / trial) or `https://test.salesforce.com` (sandbox)
+| `orgHost` | Protocol and host portion of the Salesforce org's URL Example: `https://yourusername-august.lightning.force.com` |
+| `orgAdminUsername` | The System Administrator username for the Salesforce org |
+| `orgAdminPassword` | The System Administrator password for the Salesforce org |
+| `orgAdminSecurityToken` | The security token for the Salesforce Org System Administrator User |
+
+### oAuth 2.0 is set once per folder where needed
 
 Please don't take a "do-it-yourself" approach here. Why?
 
 1. Most importantly, you don't need to.
-2. There's some scripting which checks your token set up is correct to begin making requests.
+2. There's some scripting which checks if your token set up is correct to begin making requests.
 3. Tokens are passed in subsequent requests using __Bearer Token__ authentication on the requests needing it.
-4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact when oAuth is needed.
-5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request.
+4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact whenever oAuth is needed.
+5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request or add it to a folder (regular copy paste operations of these objects is supported in Postman).
 
-### Key points
+#### Establishing oAuth 2.0 (First Time and Details)
 
-A. Look for the request with a name like "Set your oAuth 2.0 Token in Authorization tab"
-B. Don't try to do a bunch of manual work on your token setup or get fancy as it's all filled in for you already using variables.
+- Look for the request with a name like "Set your oAuth 2.0 Token in Authorization tab"
+- Don't try to do a bunch of manual work on your token setup or get fancy as it's all filled in for you with variables.
 
 Just follow these steps which will also be provided during an oAuth error state in Postman's __Console__ as errors:
 
@@ -47,22 +96,47 @@ Just follow these steps which will also be provided during an oAuth error state 
 
 ## Variables
 
-__Note__: You must set up your environment variables correctly for this all to work. Collection variables will be calculated between requests and used in subsequent  requests. The naming convention used in the collection is to prefix with an underscore for collection variables.
+⚠️ __Note__: You must set up your environment variables correctly for this all to work. Collection variables will be calculated between requests and used in subsequent  requests. The naming convention used in the collection is to prefix collection variables with an underscore.
 
-### Environment variables can be used to provide comma delimited values for these values
+These are bad examples. You should never (or almost never) see a call like these in the collection and it's strongly recommended that you not create them this way unless you like needless debugging:
 
- 1. productNamesCommaDelimited (used in the B2B Postman collection) 
+1. `pm.collectionVariables.set('myVariable', 'My new values');`
+2. `pm.collectionVariables.get('myVariable');`
+3. `pm.environment.set('_myVariable', 'My new values');`
+4. `pm.environment.get('_myVariable');`
+
+These are good examples as they adhere to the established naming convention and it's clear which dictionary we're referring to:
+
+1. `pm.collectionVariables.set('_myVariable', 'My new values');`
+2. `pm.collectionVariables.get('_myVariable');`
+3. `pm.environment.set('myVariable', 'My new values');`
+4. `pm.environment.get('myVariable');`
+
+Philosophically speaking, I don't like mixing which dictionary I get a value from. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from (or be written to) pm.environment. I don't use a context stand-on object or variable that would allow pulling the value from either pm.collectionVariables or pm.environment. I believe quite strongly in the single definition principal and not coding by coincidence - even with tests. If those terms are not familiar to you I'd recommend the book "The Pragmatic Programmer" as it could replace many on your shelf (or device).
+
+### Input values
+
+#### Some Environment variables are used for lookups to support reuse
+
+These are some examples:
+
+1. webstoreName (resolves to a WebStore Id)
+2. buyerAccountName (resolves to an Account Id)
+
+#### Some Environment variables can be used to provide comma delimited values
+
+ 1. productNamesCommaDelimited (used in the B2B Postman collection and resolves to a list of Product2 Ids) 
  2. productStockKeepingUnitsCommaDelimited
  3. locationGroupIdentifiersCommaDelimited
  4. locationIdentifiersCommaDelimited
 
-### Environment variables can be used to provide a string value for these values
+#### Some Environment variables can be used to provide a single string value
 
  1. productSearchTerm (used in the B2B Postman collection)
 
 ## Standardized variables (also documented in the Postman collection)
 
-⚠️ **_Note_**: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
+⚠️ *Note*: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
 
 This Postman collection relies on the following variables:
 
