@@ -1,12 +1,12 @@
 # Omnichannel Inventory Postman Setup for Partners
 
-_Created by Tom Zarr with key contributions from Sandra Golden and Jordane Bachelet_
+_Created by Tom Zarr with key contributions and examples from Sandra Golden and Jordane Bachelet_
 
 This material is supplemental to the Omnichannel Inventory Partner Learning Camp course. See the course for the complete setup including configuring OpenSSL and a JWT (JSON Web Token) on Windows.
 
-This postman collection contains API endpoints from various Salesforce Commerce domains, but the emphasis is on completing B2B Commerce checkouts and performing operational tasks related to that end through the Connect API and other flavors of API available on the Salesforce platform.
+This postman collection contains API endpoints from various Salesforce Commerce domains, but the emphasis is uploading inventory levels, monitoring or deleting jobs in that regard, and getting availability levels through the Connect API.
 
-Unlike many other Postman collections, this one is meant to be user friendly and have meaningful error messages when something is not set up correctly or there are issues in the request chains.
+Unlike many other Postman collections, this one is meant to be *user friendly* and have *meaningful error messages* when something is not set up correctly or there are issues in the request chains.
 
 ## ⚠️ Disclaimers
 
@@ -112,22 +112,28 @@ It's recommended you stick to this pattern as it does a few things to ensure you
 
 1. The *Pre-request* tab makes sure that your environment is selected and stops the chain (dead programs tell no lies):
 
-`// Check for environment selection
+```
+// Check for environment selection
 if(pm.environment.name === undefined) {
     const msg = 'No Postman environment selected or set.';
     pm.expect.fail(msg);
-}`
+}
+```
 
 2. The *Pre-request* tab makes sure that it clears out the collection variables:
 
-`// Clean up the variables from the collection set throughout the various calls
-pm.collectionVariables.clear();`
+```
+// Clean up the variables from the collection set throughout the various calls
+pm.collectionVariables.clear();
+```
 
 3. The *Test* tab ensures the collection is indeed empty:
 
-`pm.test('Make sure collection variables are clean', () => {
+```
+pm.test('Make sure collection variables are clean', () => {
     pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;
-});`
+});
+```
 
 ### Request names are pulled in dynamically to both the Pre-request and Test code
 
@@ -143,7 +149,7 @@ If you called the request "Heinz 57" you will see `Heinz 57 Pre-request...` or `
 
 If environment variables are expected for a request they are tested on the Pre-request script tab:
 
-`
+```
 // Expected strings in environment variables
 ['host', 'tenantId', 'bearerToken'].forEach(esiev => {
     if(!pm.environment.has(esiev)) {
@@ -153,11 +159,11 @@ If environment variables are expected for a request they are tested on the Pre-r
     pm.expect(pm.environment.get(esiev)).to.exist;
     pm.expect(pm.environment.get(esiev)).to.be.an('string');
 });
-`
+```
 
 If collection variables are expected they are tested on the Pre-request script tab
 
-`
+```
 // Expected strings in collection variables
 ['_webStoreId', '_token', '_orgId'].forEach(esicv => {
     if(pm.collectionVariables.get(esicv) === undefined) {
@@ -167,17 +173,19 @@ If collection variables are expected they are tested on the Pre-request script t
     pm.expect(pm.collectionVariables.get(esicv)).to.exist;
     pm.expect(pm.collectionVariables.get(esicv)).to.be.an('string');
 });
-`
+```
 
 ### Collection variables are listed in each Pre-request
 
 This snippet allows you to see things *befoire* each request is made:
 
-`console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));`
+```
+console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));
+```
 
 Example of all collection variables being printed to the console in a Pre-request script:
 
-`
+```
 Collection variables before:↵
 _instanceUrl: https://toms-org.my.salesforce.com↵
 _locationGroupIdentifiers: ["LocationGroup01"]↵
@@ -185,7 +193,7 @@ _orgId: 00DHn0000YYYYYYYYY↵
 _productStockKeepingUnits: ["PROSE","B-C-COFMAC-001","ESP-IOT-1","ID-PEM","PS-EL","PS-INF","TR-COFMAC-001"]↵
 _token: 0xdeadbeef!0x8badfood!0xfeedfacecafebeefx.01123581321345589144233377610↵
 _userId: 005HnXXXXXXXXXXXXX
-`
+```
 
 ## Variables
 
