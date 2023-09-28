@@ -26,17 +26,19 @@ This collection is intended to be used for a Salesforce Order Management standal
 4. Collection variables are calculated and presented before each request.
 5. Tests are applied following each response. If something isn't right I want you to know about it early so I assume little to nothing about a response being successful.
 
-## This collection provides the following today
+## This collection provides the following
 
-1. Upload Inventory (Happy Path)
-2. Get Running Import Jobs
-3. Get and Delete Import Jobs
-4. Get Inventory Availability (Log In Flow + Connect API)
-5. Get Inventory Availability (oAuth Flow + Connect API)
+1. Upload Inventory (Happy Path) - using the Headless APIs
+2. Get Running Import Jobs - using the Headless APIs
+3. Get and Delete Import Jobs - using the Headless APIs
+4. Get Inventory Availability (Log In Flow + Connect API) - using Buyer Login and Connect APIs
+5. Get Inventory Availability (oAuth Flow + Connect API) - using oAuth Login and Connect APIs
 
-There are plans to expand on these basic examples once the B2B, D2C and Order Management collections are rolling along.
+There are plans to expand on these basic examples once the B2B, D2C and Order Management collections are rolling.
 
-## Example inventory upload files are provided for:
+## Example inventory upload files are provided in the respository for:
+
+*Note*: When uploading inventory level files the format should contain 1 item per line. Consult the documentation for details.
 
  1.  Single Capricorn Coffee item
  2.  Multiple Capricorn Coffee items
@@ -44,20 +46,22 @@ There are plans to expand on these basic examples once the B2B, D2C and Order Ma
 
 ## Connected App Requirements
 
-Because we're using APIs you'll need to set up two connected apps in your org if you want to be able to use both the Headless and Connect APIs:
+Because we're using APIs you'll need to set up two Connected Apps in your org if you want to be able to use both the Headless and Connect APIs:
 
 - Postman_OCI
 - Postman_OCI_ConnectApi
+
+Using the Headless APIs (such as for loading inventory levels) requires setting up a JSON Web Token. Check the course activity around Headless APIs for details.
 
 You will need to obtain some values from your Connected App in order to establish connectivity (see: [Variables](./#Variables))
 
 ## Authentication Approach
 
-Authentication is generally handled one of three ways:
+Authentication is generally handled in three ways:
 
-1. Logging in as an Administrator (often used in the request chain's outset for lookup operations to preserve reusability across orgs) (see [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer) 
+1. Logging in as an Administrator (often used at request chain outset for lookup operations to preserve reusability across orgs) (see [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer) 
 2. Logging in as a 'known good' Buyer (aka Contact under Account with a User). Please note that all three must be set up and this is commonly _not_ going to be the case with a System Administrator account. (see [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer) 
-3. Establishing oAuth 2.0 *once per folder* and then having subsequent requests set to Bearer Token in the "Authorization" tab (see [ oAuth 2.0 is set once in each folder](./#oauth-20-is-set-once-per-folder-where-needed)
+3. Establishing oAuth 2.0 *once per folder* and then having subsequent requests set to Bearer Token in the *Authorization* tab (see [ oAuth 2.0 is set once in each folder](./#oauth-20-is-set-once-per-folder-where-needed)
 
 ### Logging in as an Administrator or Buyer
 
@@ -71,24 +75,24 @@ This is handled inline. Just supply the environment with the needed variables li
 | `orgAdminPassword` | The System Administrator password for the Salesforce org |
 | `orgAdminSecurityToken` | The security token for the Salesforce Org System Administrator User |
 
-If you need to move this type of authentication scheme around, just copy and paste it to another folder or location in the current folder.
+If you need to move this type of Administrator or Buyer authentication scheme around, just copy and paste it to another folder or location in the current folder since regular copy / paste operations of these objects is supported in Postman.
 
 ### oAuth 2.0 is set once per folder where needed
 
-Please don't take a "do-it-yourself" approach here. Why?
+Please don't take on a "do-it-yourself" approach with the oAuth 2.0 setup. Why?
 
-1. Most importantly, you don't need to.
-2. There's some scripting which checks if your token set up is correct to begin making requests.
-3. Tokens are passed in subsequent requests using __Bearer Token__ authentication on the requests needing it.
-4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact whenever oAuth is needed.
-5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request or add it to a folder (regular copy paste operations of these objects is supported in Postman).
+1. Most importantly, you don't need to. This has all been completed using variables. There's no guesswork on which log in needs the token appended to the password, etc.
+2. There's scripting which checks if your token set up is correct to begin making requests.
+3. Tokens are passed in subsequent requests using __Bearer Token__ authentication on the requests needing it. Just turn it on - done.
+4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact whenever oAuth 2.0 is needed.
+5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request or add it to a folder.
 
 #### Establishing oAuth 2.0 (First Time and Details)
 
 - Look for the request with a name like "Set your oAuth 2.0 Token in Authorization tab"
-- Don't try to do a bunch of manual work on your token setup or get fancy as it's all filled in for you with variables.
+- Please don't try to do a bunch of manual work on your token setup or get fancy. Agains, it's all filled in for you with variables.
 
-Just follow these steps which will also be provided during an oAuth error state in Postman's __Console__ as errors:
+Follow these steps which will also be provided during an oAuth error state in Postman's *Console* as errors:
 
 1. Click on the Request with a name like "Set your oAuth 2.0 Token here in Authorization tab"
 2. Click the "Authorization" tab
@@ -98,15 +102,94 @@ Just follow these steps which will also be provided during an oAuth error state 
 6. Optional - Use the delete button's dropdown option to remove expired tokens (it's best to remove all of them except the newest)
 7. Retry your request(s)
 
+## Error Handling
+
+It's my intent to trap every error state predictably possible and save anyone using this collection some time. I welcome your feedback on that front. That said, I can't possibly cover every single org configuration or set of data and this is where you come in as a partner. Below are some of the common cases I have tried to account for to tell you when something's wrong or provide hints to help troubleshoot what you're seeing.
+
+### Clear Collection Variables
+
+It's recommended you stick to this pattern as it does a few things to ensure your request chains are kept consistent:
+
+1. The *Pre-request* tab makes sure that your environment is selected and stops the chain (dead programs tell no lies):
+
+`// Check for environment selection
+if(pm.environment.name === undefined) {
+    const msg = 'No Postman environment selected or set.';
+    pm.expect.fail(msg);
+}`
+
+2. The *Pre-request* tab makes sure that it clears out the collection variables:
+
+`// Clean up the variables from the collection set throughout the various calls
+pm.collectionVariables.clear();`
+
+3. The *Test* tab ensures the collection is indeed empty:
+
+`pm.test('Make sure collection variables are clean', () => {
+    pm.expect(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value)).to.be.an('array').empty;
+});`
+
+### Request names are pulled in dynamically to both the Pre-request and Test code
+
+Whatever the request is named in the user interface is reflected dynamically by these code snippets:
+
+`console.log(`${pm.info.requestName} Pre-request Script...`);`
+
+`console.log(`${pm.info.requestName} Tests...`);`
+
+If you called the request Heinz 57 you will see "Heinz 57 Pre-request..." or "Heinz 57 Tests..." in the console. In between that you can drill into your request and response bodies as needed.
+
+### Requests must meet Preconditions
+
+If environment variables are expected for a request they are tested on the Pre-request script tab:
+
+`// Expected strings in environment variables
+['host', 'tenantId', 'bearerToken'].forEach(esiev => {
+    if(!pm.environment.has(esiev)) {
+        const msg = `Expected Postman environment variable not found: '${esiev}' in environment: '${pm.environment.name}'.`;
+        pm.expect.fail(msg);
+    }
+    pm.expect(pm.environment.get(esiev)).to.exist;
+    pm.expect(pm.environment.get(esiev)).to.be.an('string');
+});`
+
+If collection variables are expected they are tests on the Pre-request script tab
+
+`// Expected strings in collection variables
+['_webStoreId', '_token', '_orgId'].forEach(esicv => {
+    if(pm.collectionVariables.get(esicv) === undefined) {
+        const msg = 'Expected Postman collection variable not found: ' + esicv;
+        pm.expect.fail(msg);
+    }
+    pm.expect(pm.collectionVariables.get(esicv)).to.exist;
+    pm.expect(pm.collectionVariables.get(esicv)).to.be.an('string');
+});`
+
+### Collection variables are listed in each Pre-request
+
+This snippet allows you to see things *befoire* each request is made:
+
+`console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));`
+
+Here's an example of all collection variables being printed to the console in a Pre-request script:
+
+`Collection variables before:↵
+_instanceUrl: https://toms-org.my.salesforce.com↵
+_locationGroupIdentifiers: ["LocationGroup01"]↵
+_orgId: 00DHn0000YYYYYYYYY↵
+_productStockKeepingUnits: ["PROSE","B-C-COFMAC-001","ESP-IOT-1","ID-PEM","PS-EL","PS-INF","TR-COFMAC-001"]↵
+_token: 0xdeadbeef!0x8badfood!0xfeedfacecafebeefx.01123581321345589144233377610↵
+_userId: 005HnXXXXXXXXXXXXX`
+
 ## Variables
 
-⚠️ __Note__: You must set up your environment variables correctly for this all to work. Collection variables will be calculated between requests and used in subsequent  requests. The naming convention used in the collection is to prefix collection variables with an underscore.
+⚠️ __Note__: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` and to not use and underscore for an environment variable like: `tomsVariableKey`
 
-These are bad examples. You should never (or almost never) see a call like these in the collection and it's strongly recommended that you not create them this way unless you like needless debugging:
+These are bad examples. You should never (or almost never) see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
 
-1. `pm.collectionVariables.set('myVariable', 'My new values');`
+1. `pm.collectionVariables.set('myVariable', 'My new value');`
 2. `pm.collectionVariables.get('myVariable');`
-3. `pm.environment.set('_myVariable', 'My new values');`
+3. `pm.environment.set('_myVariable', 'My new value');`
 4. `pm.environment.get('_myVariable');`
 
 These are good examples as they adhere to the established naming convention and it's clear which dictionary we're referring to:
