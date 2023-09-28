@@ -110,7 +110,7 @@ It's my intent to trap every error state predictably possible and save anyone us
 
 It's recommended you stick to this pattern as it does a few things to ensure your request chains are kept consistent:
 
-1. The *Pre-request* tab makes sure that your environment is selected and stops the chain (dead programs tell no lies):
+1. The **Pre-request** tab makes sure that your environment is selected and stops the chain (dead programs tell no lies):
 
 ```
 // Check for environment selection
@@ -120,14 +120,14 @@ if(pm.environment.name === undefined) {
 }
 ```
 
-2. The *Pre-request* tab makes sure that it clears out the collection variables:
+2. The **Pre-request** tab makes sure that it clears out the collection variables:
 
 ```
 // Clean up the variables from the collection set throughout the various calls
 pm.collectionVariables.clear();
 ```
 
-3. The *Test* tab ensures the collection is indeed empty:
+3. The **Test** tab ensures the collection is indeed empty:
 
 ```
 pm.test('Make sure collection variables are clean', () => {
@@ -147,7 +147,7 @@ If you called the request "Heinz 57" you will see `Heinz 57 Pre-request...` or `
 
 ### Requests must meet Preconditions
 
-If environment variables are expected for a request they are tested on the Pre-request script tab:
+If **environment** variables are expected for a request they are tested on the Pre-request script tab:
 
 ```
 // Expected strings in environment variables
@@ -161,7 +161,7 @@ If environment variables are expected for a request they are tested on the Pre-r
 });
 ```
 
-If collection variables are expected they are tested on the Pre-request script tab
+If **collection** variables are expected they are tested on the Pre-request script tab
 
 ```
 // Expected strings in collection variables
@@ -177,13 +177,13 @@ If collection variables are expected they are tested on the Pre-request script t
 
 ### Collection variables are listed in each Pre-request
 
-This snippet allows you to see things *befoire* each request is made:
+This snippet allows you to see things _before_ each request is made:
 
 ```
 console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));
 ```
 
-Example of all collection variables being printed to the console in a Pre-request script:
+Example of collection variables being printed to the console in a Pre-request script:
 
 ```
 Collection variables before:↵
@@ -197,7 +197,7 @@ _userId: 005HnXXXXXXXXXXXXX
 
 ## Variables
 
-⚠️ __Note__: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` and to not use and underscore for an environment variable like: `tomsVariableKey`
+> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` and to not use and underscore for an environment variable like: `tomsVariableKey`
 
 These are bad examples. You should never (or almost never) see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
 
