@@ -26,7 +26,7 @@ This collection is intended to be used for a Salesforce Order Management standal
 4. Collection variables are calculated and presented before each request.
 5. Tests are applied following each response. If something isn't right I want you to know about it early so I assume little to nothing about a response being successful.
 
-## This collection provides the following:
+## This collection provides the following today
 
 1. Upload Inventory (Happy Path)
 2. Get Running Import Jobs
