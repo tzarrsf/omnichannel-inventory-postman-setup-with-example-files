@@ -111,9 +111,9 @@ These are bad examples. You should never (or almost never) see a call like these
 
 These are good examples as they adhere to the established naming convention and it's clear which dictionary we're referring to:
 
-1. `pm.collectionVariables.set('_myVariable', 'My new values');`
+1. `pm.collectionVariables.set('_myVariable', 'My new value');`
 2. `pm.collectionVariables.get('_myVariable');`
-3. `pm.environment.set('myVariable', 'My new values');`
+3. `pm.environment.set('myVariable', 'My new value');`
 4. `pm.environment.get('myVariable');`
 
 I don't like mixing which dictionaries I use to get a value. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from (or in rare cases be written to) pm.environment. I don't use a context stand-in object that would allow pulling a value by key from either pm.collectionVariables or pm.environment at runtime. I believe quite strongly in the single definition principal and not coding by coincidence - even with tests and especially with tests. If those terms are not familiar to you I'd recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
