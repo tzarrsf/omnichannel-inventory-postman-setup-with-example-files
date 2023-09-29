@@ -239,7 +239,7 @@ Every coder has their preferences and principals. I don't like mixing sources li
 
  1. productSearchTerm (used in the B2B Postman collection)
 
-## Standardized variables (also documented in the Postman collection)
+## Standardized variables
 
 ⚠️ __Note__: The naming convention found here is used across other Salesforce Commerce product Postman collections in the Partner Readiness space when possible to support reuse.
 
