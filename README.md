@@ -12,10 +12,12 @@ Unlike many other Postman collections, this one is meant to be *user friendly* a
 
 - This collection is provided as-is. It's not officially supported by Salesforce or covered by SLAs.
 - API documentation is not provided with the collection. Please refer to the official documentation.
-- The documentation for the majority of the endpoints in this collection can be found in these guides:
+- The documentation for the majority of the endpoints in this collection can be found in these guides, but keep in mind this collection was put together through the lens of a Salesforce org-based developer, not B2C Commerce:
     - [Omnichannel Inventory Headless API Endpoints](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_headless_apis.htm&type=5)
     - [Omnichannel Inventory Connect REST APIs](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_connect_rest_apis.htm&type=5)
-    - 
+    - [getInventoryImport](https://developer.salesforce.com/docs/commerce/commerce-api/references/impex?meta=getInventoryImport)
+    - [deleteInventoryImport](https://developer.salesforce.com/docs/commerce/commerce-api/references/impex?meta=deleteInventoryImport)
+    - [Salesforce Omnichannel Inventory Implementation Guide](https://resources.docs.salesforce.com/latest/latest/en-us/sfdc/pdf/salesforce_omnichannel_inventory_implementation_guide.pdf)
 
 ## What this collection is and isn't
 
