@@ -13,7 +13,7 @@ Unlike many other Postman collections, this one is meant to be *user friendly* a
 - This collection is provided as-is. It's not officially supported by Salesforce or covered by SLAs.
 - API documentation is not provided with the collection. Please refer to the official documentation.
 - The documentation for the majority of the endpoints in this collection can be found in these guides:
-    - [Omnichannel Inventory Headless API Endpoints]([LINK](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_headless_apis.htm&type=5))
+    - [Omnichannel Inventory Headless API Endpoints](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_headless_apis.htm&type=5)
     - [Omnichannel Inventory Connect REST APIs](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_connect_rest_apis.htm&type=5)
     - 
 
