@@ -203,7 +203,7 @@ _userId: 005HnXXXXXXXXXXXXX
 
 ## Variables
 
-> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` while  an environment variable should not contain an underscore. Example: `tomsVariableKey` I would never recommend writing to environment variables at runtime. My approach is to keep these consistent across the collection and all folders across the collection and use them when changing orgs, storefronts or users.
+> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` while  an environment variable should not contain an underscore. Example: `tomsVariableKey`. I would never recommend writing to environment variables at runtime. My approach is to keep these consistent across the collection and all folders across the collection and use them only when changing orgs, storefronts or users.
 
 These are some *bad* examples. You shouldn't see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
 
