@@ -1,6 +1,7 @@
 # Omnichannel Inventory Postman Setup for Partners
 _Created by Tom Zarr with key contributions and examples from Sandra Golden and Jordane Bachelet_
 
+## Background and Use Case
 
 This material is supplemental to the Omnichannel Inventory Partner Learning Camp course. See the course for the complete setup including configuring OpenSSL and a JWT (JSON Web Token) on Windows.
 
