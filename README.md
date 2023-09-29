@@ -81,7 +81,7 @@ This is handled inline. Just supply the environment with the needed variables li
 | `orgAdminPassword` | The System Administrator password for the Salesforce org |
 | `orgAdminSecurityToken` | The security token for the Salesforce Org System Administrator User |
 
-If you need to move this type of Administrator or Buyer authentication scheme around, just copy and paste it to another folder or location in the current folder since regular copy / paste operations of these objects is supported in Postman.
+If you need to move this type of Administrator or Buyer authentication scheme around, just copy the request and paste it into another folder or location in the current folder. Copy and paste operations are supported in Postman.
 
 ### oAuth 2.0 is set once per folder where needed
 
