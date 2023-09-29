@@ -197,9 +197,9 @@ _userId: 005HnXXXXXXXXXXXXX
 
 ## Variables
 
-> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` and to not use and underscore for an environment variable like: `tomsVariableKey`
+> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` while  an environment variable should not contain an underscore. Example: `tomsVariableKey` I would never recommend writing to environment variables at runtime. My approach is to keep these consistent across the collection and all folders across the collection and use them when changing orgs, storefronts or users.
 
-These are bad examples. You should never (or almost never) see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
+These are some *bad* examples. You shouldn't see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
 
 1. `pm.collectionVariables.set('myVariable', 'My new value');`
 2. `pm.collectionVariables.get('myVariable');`
@@ -213,7 +213,7 @@ These are good examples as they adhere to the established naming convention and 
 3. `pm.environment.set('myVariable', 'My new value');`
 4. `pm.environment.get('myVariable');`
 
-I don't like mixing which dictionaries I use to get a value. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from (or in rare cases be written to) pm.environment. I don't use a context stand-in that would allow pulling or pushing a value by key from either pm.collectionVariables or pm.environment at runtime. I believe quite strongly in the single definition principal and not coding by coincidence - even with tests, actually - especially with tests. If those terms are not familiar I'd like to recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
+I don't like mixing sources like dictionaries for retrieving values. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from. I don't use a context stand-in that would allow pulling or pushing a value by key from either pm.collectionVariables or pm.environment at runtime. I believe strongly that a few coding principals such as singular definition and not coding by coincidence - even with tests, actually - especially with tests can save time. If those terms are not familiar I'd like to recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
 
 ### Input values
 
