@@ -91,14 +91,14 @@ Please don't take on a "do-it-yourself" approach with the oAuth 2.0 setup. Why?
 2. There's scripting which checks if your token set up is correct to begin making requests.
 3. Tokens are passed in subsequent requests using __Bearer Token__ authentication on the requests needing it. Just turn it on - done.
 4. This was done "by design" so you can easily add your own requests or copy them and move them around with little to no impact whenever oAuth 2.0 is needed.
-5. You can also find and copy the requests named something like "Set your oAuth 2.0 Token in Authorization tab" whenever you need to establish oAuth 2.0 before another request or add it to a folder.
+5. You can also find and copy the requests named something like **Set your oAuth 2.0 Token in Authorization tab** whenever you need to establish oAuth 2.0 before another request or add it to a folder.
 
 #### Establishing oAuth 2.0 (First Time and Details)
 
-- Look for the request with a name like "Set your oAuth 2.0 Token in Authorization tab"
-- Please don't try to do a bunch of manual work on your token setup or get fancy. Agains, it's all filled in for you with variables.
+- Look for the request with a name like **Set your oAuth 2.0 Token in Authorization tab**
+- Please don't try to do a bunch of manual work on your token setup or get fancy here. Again, it's all filled in with variables already.
 
-Follow these steps which will also be provided during an oAuth error state in Postman's *Console* as errors:
+Follow these steps to establish and used your token. These or something very similar will be provided as an error in the **Console** if there's an oAuth error state:
 
 1. Click on the Request with a name like "Set your oAuth 2.0 Token here in Authorization tab"
 2. Click the "Authorization" tab
@@ -110,13 +110,13 @@ Follow these steps which will also be provided during an oAuth error state in Po
 
 ## Error Handling
 
-It's my intent to trap every error state predictably possible and save anyone using this collection some time. I welcome your feedback on that front. That said, I can't possibly cover every single org configuration or set of data and this is where you come in as a partner. Below are some of the common cases I have tried to account for to tell you when something's wrong or provide hints to help troubleshoot what you're seeing.
+It's my intent to trap every reasonably predictable error state and save anyone using this collection time. I welcome your feedback on that front. That said, I can't cover every single org configuration or set of data and this is where you come in as a partner. Below are some of the common cases I have tried to account for so the request chains can inform you when something's wrong or at least provide hints to help troubleshoot what you're seeing.
 
 ### Clear Collection Variables
 
-It's recommended you stick to this pattern as it does a few things to ensure your request chains are kept consistent:
+It's recommended you stick to the pattern of having this as the first step in your folder  as it does a few things to ensure your request chain data is kept consistent:
 
-1. The **Pre-request** tab makes sure that your environment is selected and stops the chain (dead programs tell no lies):
+1. The **Pre-request** tab makes sure that your environment is selected and stops the chain if not (dead programs tell no lies):
 
 ```
 // Check for environment selection
@@ -141,19 +141,19 @@ pm.test('Make sure collection variables are clean', () => {
 });
 ```
 
-### Request names are pulled in dynamically to both the Pre-request and Test code
+### Request names are pulled in dynamically in both the Pre-request and Test code
 
-Whatever the request is named in the user interface is reflected dynamically by these code snippets:
+Whatever the request is named in the Postman user interface is reflected dynamically by these code snippets:
 
 `console.log(`${pm.info.requestName} Pre-request Script...`);`
 
 `console.log(`${pm.info.requestName} Tests...`);`
 
-If you called the request "Heinz 57" you will see `Heinz 57 Pre-request...` or `Heinz 57 Tests...` in the console. You can drill into your request and response bodies as needed knowing what was passed to the endpoint.
+If you called your request "Heinz 57" you will see `Heinz 57 Pre-request Script...` or `Heinz 57 Tests...` in the console accordingly. You can drill into your request and response bodies as needed knowing what was passed to the endpoint.
 
 ### Requests must meet Preconditions
 
-If **environment** variables are expected for a request they are tested on the Pre-request script tab:
+If **environment** variables are expected for a request they are tested on the Pre-request script tab and if not found the test run should go to a hard fail state. Just look for the error (red text) in the Console.
 
 ```
 // Expected strings in environment variables
@@ -167,7 +167,7 @@ If **environment** variables are expected for a request they are tested on the P
 });
 ```
 
-If **collection** variables are expected they are tested on the Pre-request script tab
+If **collection** variables are expected they are tested on the Pre-request script tab. Like the environment variables, the test run should go to a hard fail state and you should find a *meaningful* error in the Console. 
 
 ```
 // Expected strings in collection variables
@@ -183,7 +183,7 @@ If **collection** variables are expected they are tested on the Pre-request scri
 
 ### Collection variables are listed in each Pre-request
 
-This snippet allows you to see things _before_ each request is made:
+This code snippet allows you to see things _before_ each request is made in the **Pre-Request Script** tab:
 
 ```
 console.log('Collection variables before:\r\n'.concat(pm.collectionVariables.values.map((v) =>  v.key + ': ' + v.value).sort().join('\r\n')));
@@ -203,23 +203,23 @@ _userId: 005HnXXXXXXXXXXXXX
 
 ## Variables
 
-> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables will be calculated between requests and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` while  an environment variable should not contain an underscore. Example: `tomsVariableKey`. I would never recommend writing to environment variables at runtime. My approach is to keep these consistent across the collection and all folders across the collection and use them only when changing orgs, storefronts or users.
+> ⚠️ **Note**: You must set up your environment variables correctly for all of this to work. Collection variables are typically calculated and assigned between requests (in the **Test** tab script) and used in subsequent requests. The naming convention used in the collection is to prefix collection variable keys with an underscore like `_tomsVariableKey` while  an environment variable should not contain an underscore. Example: `tomsVariableKey`. I would never recommend writing to environment variables at runtime. My approach is to keep these consistent across the collection and all folders across the collection and use them only when changing orgs, storefronts or users.
 
-These are some *bad* examples. You shouldn't see a call like these in the collection and it's strongly recommended that you do not create them this way unless you like needless debugging:
+These are some *bad* examples. You shouldn't see calls like these in the collection and it's strongly recommended that you do not create them this way to avoid needless debugging:
 
 1. `pm.collectionVariables.set('myVariable', 'My new value');`
 2. `pm.collectionVariables.get('myVariable');`
 3. `pm.environment.set('_myVariable', 'My new value');`
 4. `pm.environment.get('_myVariable');`
 
-These are good examples as they adhere to the established naming convention and it's clear which dictionary we're referring to:
+These are good examples as they adhere to the established naming convention and it's clear which dictionary we're using when the name is seen in the Console:
 
 1. `pm.collectionVariables.set('_myVariable', 'My new value');`
 2. `pm.collectionVariables.get('_myVariable');`
 3. `pm.environment.set('myVariable', 'My new value');`
 4. `pm.environment.get('myVariable');`
 
-I don't like mixing sources like dictionaries for retrieving values. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from. I don't use a context stand-in that would allow pulling or pushing a value by key from either pm.collectionVariables or pm.environment at runtime. I believe strongly that a few coding principals such as singular definition and not coding by coincidence - even with tests, actually - especially with tests can save time. If those terms are not familiar I'd like to recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
+Every coder has their preferences and principals. I don't like mixing sources like dictionaries for retrieving a value by key. A value with an underscore prefix in this naming convention should correspond to pm.collectionVariables and one without should come from pm.environment. I don't use a context stand-in object that allows pulling or pushing a value by key from either pm.collectionVariables or pm.environment at runtime. I believe strongly that a few coding principals such as singular definition and not coding by coincidence - even with tests, and especially with tests can save time. If those terms are not familiar I'd like to recommend the book "The Pragmatic Programmer" as it could replace many on your shelf or device.
 
 ### Input values
 
