@@ -12,7 +12,10 @@ Unlike many other Postman collections, this one is meant to be *user friendly* a
 
 - This collection is provided as-is. It's not officially supported by Salesforce or covered by SLAs.
 - API documentation is not provided with the collection. Please refer to the official documentation.
-- The documentation for the majority of the endpoints in this collection can be found in the [B2B and D2C Commerce Resources](https://developer.salesforce.com/docs/atlas.en-us.chatterapi.meta/chatterapi/connect_resources_commerce.htm) of the Connect REST API Developer Guide.
+- The documentation for the majority of the endpoints in this collection can be found in these guides:
+    - [Omnichannel Inventory Headless API Endpoints]([LINK](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_headless_apis.htm&type=5))
+    - [Omnichannel Inventory Connect REST APIs](https://help.salesforce.com/s/articleView?id=sf.inv_omnichannel_inventory_connect_rest_apis.htm&type=5)
+    - 
 
 ## What this collection is and isn't
 
