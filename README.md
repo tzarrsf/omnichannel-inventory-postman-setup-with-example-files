@@ -65,8 +65,8 @@ You will need to obtain some values from your Connected App in order to establis
 
 Authentication is generally handled in three ways:
 
-1. Logging in as an Administrator (often used at request chain outset for lookup operations to preserve reusability across orgs) (see [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer))
-2. Logging in as a 'known good' Buyer (aka Contact under Account with a User). Please note that all three must be set up and this is commonly _not_ going to be the case with a System Administrator account. (see [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer) 
+1. Logging in as an Administrator (often used at request chain outset for lookup operations to preserve reusability across orgs). See [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer).
+2. Logging in as a 'known good' Buyer (aka Contact under Account with a User). Please note that all three must be set up and this is commonly _not_ going to be the case with a System Administrator account. See [Logging in as an Administrator or Buyer](./logging-in-as-an-administrator-or-buyer). 
 3. Establishing oAuth 2.0 *once per folder* and then having subsequent requests set to Bearer Token in the *Authorization* tab (see [ oAuth 2.0 is set once in each folder](./#oauth-20-is-set-once-per-folder-where-needed)
 
 ### Logging in as an Administrator or Buyer
