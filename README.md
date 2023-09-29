@@ -42,9 +42,9 @@ This collection is intended to be used for a Salesforce Order Management standal
 
 There are plans to expand on these basic examples once the B2B, D2C and Order Management collections are rolling.
 
-## Example inventory upload files are provided in the respository for:
+## Example inventory upload files
 
-*Note*: When uploading inventory level files the format should contain 1 item per line. Consult the documentation for details.
+*Note*: When uploading inventory level files, the format should contain 1 item per line. Consult the official documentation for details.
 
  1.  Single Capricorn Coffee item
  2.  Multiple Capricorn Coffee items
